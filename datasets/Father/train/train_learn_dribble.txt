@@ -1,0 +1,780 @@
+% Running on host: hawk
+
+% Switching to VarIndicator = uppercase.
+
+% Unset'ing VarIndicator.
+
+% Calling ILPouterLoop from createRegressionOuterLooper.
+
+% getInputArgWithDefaultValue: args=[datasets/Father/train/train_pos.txt, datasets/Father/train/train_neg.txt, datasets/Father/train/train_bk.txt, datasets/Father/train/train_facts.txt]
+%  for N=0: args[N]=datasets/Father/train/train_pos.txt
+
+% getInputArgWithDefaultValue: args=[datasets/Father/train/train_pos.txt, datasets/Father/train/train_neg.txt, datasets/Father/train/train_bk.txt, datasets/Father/train/train_facts.txt]
+%  for N=1: args[N]=datasets/Father/train/train_neg.txt
+
+% getInputArgWithDefaultValue: args=[datasets/Father/train/train_pos.txt, datasets/Father/train/train_neg.txt, datasets/Father/train/train_bk.txt, datasets/Father/train/train_facts.txt]
+%  for N=2: args[N]=datasets/Father/train/train_bk.txt
+
+% getInputArgWithDefaultValue: args=[datasets/Father/train/train_pos.txt, datasets/Father/train/train_neg.txt, datasets/Father/train/train_bk.txt, datasets/Father/train/train_facts.txt]
+%  for N=3: args[N]=datasets/Father/train/train_facts.txt
+
+% Welcome to the WILL ILP/SRL systems.
+
+
+% Switching to VarIndicator = uppercase.
+
+% Unset'ing VarIndicator.
+% Reading background theory from dir: null
+% Load '../background.txt'.
+
+% Switching to VarIndicator = uppercase.
+
+***** Warning: % Since this is the first setting of the notation for variables, will keep:
+%   variableIndicator = uppercase *****
+
+
+***** Warning: % Since this is the first setting of the notation for variables, will keep:
+%   variableIndicator = uppercase *****
+
+% [ LazyGroundClauseIndex ]  Building full index for mode/1 with 1 assertions.
+% LoadAllModes() called.  Currently loaded modes: []
+% [ LazyGroundClauseIndex ]  Building full index for sameAs/2 with 2 assertions.
+% [ LazyGroundNthArgumentClauseIndex ]  Argument 1:  Building full index for exp/3.
+% [ LazyGroundNthArgumentClauseIndex ]  Argument 0:  Building full index for log/3.
+% LoadAllLibraries() called.  Currently loaded libraries: [listsInLogic, differentInLogic, modes_arithmeticInLogic, inlines_comparisonInLogic, modes_listsInLogic, inlines_differentInLogic, modes_differentInLogic, arithmeticInLogic, inlines_listsInLogic, modes_comparisonInLogic, comparisonInLogic, inlines_arithmeticInLogic]
+
+%  Read the facts.
+%  Have read 41 facts.
+
+%  LearnOneClause initialized.
+
+% The outer looper has been created.
+
+% Initializing the ILP inner looper.
+% Have read 5 examples from 'datasets/Father/train' [datasets/Father/train/train*].
+
+% NEW target:                 father(D, E)
+%  targetPred:                father/2
+%  targetArgTypes:            signature = [const, const], types = [+name, +name]
+%  targets:                   [father(D, E)]
+%  targetPredicates:          [father/2]
+%  targetArgSpecs:            [[D[+name], E[+name]]]
+%  variablesInTargets:        [[D, E]]
+
+% Started collecting constants
+
+% Collecting the types of constants.
+
+% Looking at the training examples to see if any types of new constants can be inferred.
+% Time to collect constants: 2 milliseconds
+% Time to collect examples: 0 seconds
+
+% Read 5 pos examples and 0 neg examples.
+% Time to init learnOneClause: 9 milliseconds
+% Old dirnull
+Setting model dir
+
+% Have 5 'raw' positive examples and kept 5.
+% Have 0 'raw' negative examples and kept 0.
+% No neg ex for father
+
+% processing backup's for father
+%  POS EX = 5
+%  NEG EX = 0
+
+% Memory usage by WILLSetup (just counts # targets?):
+%  |backupPosExamples| = 1
+%  |backupNegExamples| = 1
+%  |predicatesAsFacts| = 0
+%  |addedToFactBase|   = 0
+datasets/Father/train/models/
+File: datasets/Father/train/advice.txt doesnt exist.Hence no advice loaded
+
+% Learn model for: father
+% Kept 5 of the 5 positive examples.
+% Kept 0 of the 0 negative examples.
+Loading checkpoint model from datasets/Father/train/models/bRDNs/father.model.ckpt
+%   loadModel (#0): datasets/Father/train/models/bRDNs/Trees/fatherTree0.tree
+%   loadModel (#1): datasets/Father/train/models/bRDNs/Trees/fatherTree1.tree
+%   loadModel (#2): datasets/Father/train/models/bRDNs/Trees/fatherTree2.tree
+%   loadModel (#3): datasets/Father/train/models/bRDNs/Trees/fatherTree3.tree
+%   loadModel (#4): datasets/Father/train/models/bRDNs/Trees/fatherTree4.tree
+%   loadModel (#5): datasets/Father/train/models/bRDNs/Trees/fatherTree5.tree
+%   loadModel (#6): datasets/Father/train/models/bRDNs/Trees/fatherTree6.tree
+%   loadModel (#7): datasets/Father/train/models/bRDNs/Trees/fatherTree7.tree
+%   loadModel (#8): datasets/Father/train/models/bRDNs/Trees/fatherTree8.tree
+%   loadModel (#9): datasets/Father/train/models/bRDNs/Trees/fatherTree9.tree
+%   loadModel (#10): datasets/Father/train/models/bRDNs/Trees/fatherTree10.tree
+%   loadModel (#11): datasets/Father/train/models/bRDNs/Trees/fatherTree11.tree
+%   loadModel (#12): datasets/Father/train/models/bRDNs/Trees/fatherTree12.tree
+%   loadModel (#13): datasets/Father/train/models/bRDNs/Trees/fatherTree13.tree
+%   loadModel (#14): datasets/Father/train/models/bRDNs/Trees/fatherTree14.tree
+%   loadModel (#15): datasets/Father/train/models/bRDNs/Trees/fatherTree15.tree
+%   loadModel (#16): datasets/Father/train/models/bRDNs/Trees/fatherTree16.tree
+%   loadModel (#17): datasets/Father/train/models/bRDNs/Trees/fatherTree17.tree
+%   loadModel (#18): datasets/Father/train/models/bRDNs/Trees/fatherTree18.tree
+%   loadModel (#19): datasets/Father/train/models/bRDNs/Trees/fatherTree19.tree
+%  Done loading 20 models.
+Found 20 trees in checkpoint
+% Time taken to learn 20 trees is 79 milliseconds.
+
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:0.0
+Set score:0.0
+% Dataset size: 5
+Computing probabilities
+% [ LazyGroundClauseIndex ]  Building full index for childof/2 with 16 assertions.
+% [ LazyGroundClauseIndex ]  Building full index for male/1 with 13 assertions.
+% [ LazyGroundNthArgumentClauseIndex ]  Argument 0:  Building full index for siblingof/2.
+% [ LazyGroundClauseIndex ]  Building full index for siblingof/2 with 12 assertions.
+prob time:12 milliseconds
+No hidden examples for : father
+Time to build dataset: 12 milliseconds
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:9.628944098949432E-6
+Set score:0.0
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+***** Warning: % Have only 5 positive examples, so cannot choose 10 of them. *****
+
+
+% Have these 5 positive seeds: 0 1 2 3 4
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% LearnOneClause Parameters:
+%   Targets (1):
+%    father(+name, +name)
+%  Modes (39):
+%    male(+name),
+%    childof(+name, +name),
+%    siblingof(+name, -name),
+%    addList(+willList, #willNumber),
+%    multiplyList(+willList, #willNumber),
+%    abs(+willNumber, &willNumber),
+%    minus(+willNumber, &willNumber),
+%    minus(+willNumber, +willNumber, &willNumber),
+%    plus(+willNumber, +willNumber, &willNumber),
+%    mult(+willNumber, +willNumber, &willNumber),
+%    div(+willNumber, +willNumber, &willNumber),
+%    allNumbers(+willList),
+%    positiveNumber(+willNumber),
+%    negativeNumber(+willNumber),
+%    in0toDot001(+willNumber),
+%    in0toDot01(+willNumber),
+%    in0toDot1(+willNumber),
+%    in0to1(+willNumber),
+%    in0to10(+willNumber),
+%    in0to100(+willNumber),
+%    in0to1000(+willNumber),
+%    equalWithTolerance(+willNumber, +willNumber, &willNumber),
+%    greaterOrEqualDifference(+willNumber, +willNumber, &willNumber),
+%    smallerOrEqualDifference(+willNumber, +willNumber, &willNumber),
+%    isaEqualTolerance(+willNumber),
+%    lessThan(+willNumber, +willNumber),
+%    greaterThan(+willNumber, +willNumber),
+%    lessThanOrEqual(+willNumber, +willNumber),
+%    greaterThanOrEqual(+willNumber, +willNumber),
+%    inBetweenOO(+willNumber, +willNumber, +willNumber),
+%    inBetweenCO(+willNumber, +willNumber, +willNumber),
+%    inBetweenOC(+willNumber, +willNumber, +willNumber),
+%    inBetweenCC(+willNumber, +willNumber, +willNumber),
+%    memberOfList(+willAnything, +willList),
+%    firstInList(+willList, &willAnything),
+%    restOfList(+willList, &willList),
+%    positionInList(+willAnything, +willList, &willNumber),
+%    nthInList(+willNumber, +willList, &willAnything),
+%    lengthOfList(+willList, &willNumber)
+
+% target           = father(D, E)
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.2E-7) for clause:  father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+% Unacceptable due to being the root node.
+% Most-general root: father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]  score = -Infinity
+
+% Consider expanding [#1 of outerLoop #1, bodyLen=0] 'father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]' score=-Infinity
+%  At # nodes expanded = 1, |OPEN| = 0.  Pruned 0 variant children.  Sending 4 items to OPEN for evaluation and possible insertion.
+% Have created 4 valid-on-seeds descendants and have picked up 7 bad extensions.
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(A, _) :- male(A).  [covers 4.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(_, A) :- male(A).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.0200000000000002E-6) for clause:  father(A, B) :- childof(B, A).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.23E-6) for clause:  father(A, _) :- siblingof(A, _).  [covers 3.0/5.0 pos, 0.0/0.0 neg]
+
+% The best node found: null
+
+% No acceptable clause was learned on this cycle of the ILP inner loop (LearnOneClause).
+% The closest-to-acceptable node found (score = -Infinity):
+%  null
+
+% ******************************************
+
+%  Have stopped ILP's outer loop because the tree-structured queue is empty.
+
+% ******************************************
+
+%%%%%  WILL-Produced Tree #21 @ 18:59:59 4/20/17.  [Using 3,351,992 memory cells.]  %%%%%
+
+
+% FOR father(A, B):
+%   return 0;  // std dev = 0.003, 5.000 (wgt'ed) examples reached here.  /* #pos=5 */
+
+
+% Clauses:
+
+father(A, B, 0) :- !. // Clause #1.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(underscore, underscore, 0) :-  /* #pos=5 */ 
+   !. // Flattened version of clause #1.
+
+
+% The unique flattened literals:
+
+% Saving model in: datasets/Father/train/models/bRDNs/father.model.ckpt
+% Time taken to learn 21 trees is 234 milliseconds.
+
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:9.628944098949432E-6
+Set score:0.0
+% Kept 5 of the 5 positive examples.
+% Kept 0 of the 0 negative examples.
+% Dataset size: 5
+Computing probabilities
+prob time:8 milliseconds
+No hidden examples for : father
+Time to build dataset: 8 milliseconds
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:9.628944098949432E-6
+Set score:0.0
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% Have these 5 positive seeds: 0 1 2 3 4
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% target           = father(D, E)
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.2E-7) for clause:  father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+% Unacceptable due to being the root node.
+% Most-general root: father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]  score = -Infinity
+
+% Consider expanding [#1 of outerLoop #1, bodyLen=0] 'father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]' score=-Infinity
+%  At # nodes expanded = 1, |OPEN| = 0.  Pruned 0 variant children.  Sending 4 items to OPEN for evaluation and possible insertion.
+% Have created 4 valid-on-seeds descendants and have picked up 7 bad extensions.
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(A, _) :- male(A).  [covers 4.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(_, A) :- male(A).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.0200000000000002E-6) for clause:  father(A, B) :- childof(B, A).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.23E-6) for clause:  father(A, _) :- siblingof(A, _).  [covers 3.0/5.0 pos, 0.0/0.0 neg]
+
+% The best node found: null
+
+% No acceptable clause was learned on this cycle of the ILP inner loop (LearnOneClause).
+% The closest-to-acceptable node found (score = -Infinity):
+%  null
+
+% ******************************************
+
+%  Have stopped ILP's outer loop because the tree-structured queue is empty.
+
+% ******************************************
+
+%%%%%  WILL-Produced Tree #22 @ 18:59:59 4/20/17.  [Using 1,529,064 memory cells.]  %%%%%
+
+
+% FOR father(A, B):
+%   return 0;  // std dev = 0.003, 5.000 (wgt'ed) examples reached here.  /* #pos=5 */
+
+
+% Clauses:
+
+father(A, B, 0) :- !. // Clause #1.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(underscore, underscore, 0) :-  /* #pos=5 */ 
+   !. // Flattened version of clause #1.
+
+
+% The unique flattened literals:
+
+% Saving model in: datasets/Father/train/models/bRDNs/father.model.ckpt
+% Time taken to learn 22 trees is 367 milliseconds.
+
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:9.628944098949432E-6
+Set score:0.0
+% Kept 5 of the 5 positive examples.
+% Kept 0 of the 0 negative examples.
+% Dataset size: 5
+Computing probabilities
+prob time:7 milliseconds
+No hidden examples for : father
+Time to build dataset: 7 milliseconds
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:9.628944098949432E-6
+Set score:0.0
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% Have these 5 positive seeds: 0 1 2 3 4
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% target           = father(D, E)
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.2E-7) for clause:  father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+% Unacceptable due to being the root node.
+% Most-general root: father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]  score = -Infinity
+
+% Consider expanding [#1 of outerLoop #1, bodyLen=0] 'father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]' score=-Infinity
+%  At # nodes expanded = 1, |OPEN| = 0.  Pruned 0 variant children.  Sending 4 items to OPEN for evaluation and possible insertion.
+% Have created 4 valid-on-seeds descendants and have picked up 7 bad extensions.
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(A, _) :- male(A).  [covers 4.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(_, A) :- male(A).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.0200000000000002E-6) for clause:  father(A, B) :- childof(B, A).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.23E-6) for clause:  father(A, _) :- siblingof(A, _).  [covers 3.0/5.0 pos, 0.0/0.0 neg]
+
+% The best node found: null
+
+% No acceptable clause was learned on this cycle of the ILP inner loop (LearnOneClause).
+% The closest-to-acceptable node found (score = -Infinity):
+%  null
+
+% ******************************************
+
+%  Have stopped ILP's outer loop because the tree-structured queue is empty.
+
+% ******************************************
+
+%%%%%  WILL-Produced Tree #23 @ 18:59:59 4/20/17.  [Using 1,490,208 memory cells.]  %%%%%
+
+
+% FOR father(A, B):
+%   return 0;  // std dev = 0.003, 5.000 (wgt'ed) examples reached here.  /* #pos=5 */
+
+
+% Clauses:
+
+father(A, B, 0) :- !. // Clause #1.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(underscore, underscore, 0) :-  /* #pos=5 */ 
+   !. // Flattened version of clause #1.
+
+
+% The unique flattened literals:
+
+% Saving model in: datasets/Father/train/models/bRDNs/father.model.ckpt
+% Time taken to learn 23 trees is 506 milliseconds.
+
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:9.628944098949432E-6
+Set score:0.0
+% Kept 5 of the 5 positive examples.
+% Kept 0 of the 0 negative examples.
+% Dataset size: 5
+Computing probabilities
+prob time:6 milliseconds
+No hidden examples for : father
+Time to build dataset: 7 milliseconds
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:9.628944098949432E-6
+Set score:0.0
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% Have these 5 positive seeds: 0 1 2 3 4
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% target           = father(D, E)
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.2E-7) for clause:  father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+% Unacceptable due to being the root node.
+% Most-general root: father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]  score = -Infinity
+
+% Consider expanding [#1 of outerLoop #1, bodyLen=0] 'father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]' score=-Infinity
+%  At # nodes expanded = 1, |OPEN| = 0.  Pruned 0 variant children.  Sending 4 items to OPEN for evaluation and possible insertion.
+% Have created 4 valid-on-seeds descendants and have picked up 7 bad extensions.
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(A, _) :- male(A).  [covers 4.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(_, A) :- male(A).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.0200000000000002E-6) for clause:  father(A, B) :- childof(B, A).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.23E-6) for clause:  father(A, _) :- siblingof(A, _).  [covers 3.0/5.0 pos, 0.0/0.0 neg]
+
+% The best node found: null
+
+% No acceptable clause was learned on this cycle of the ILP inner loop (LearnOneClause).
+% The closest-to-acceptable node found (score = -Infinity):
+%  null
+
+% ******************************************
+
+%  Have stopped ILP's outer loop because the tree-structured queue is empty.
+
+% ******************************************
+
+%%%%%  WILL-Produced Tree #24 @ 18:59:59 4/20/17.  [Using 1,493,120 memory cells.]  %%%%%
+
+
+% FOR father(A, B):
+%   return 0;  // std dev = 0.003, 5.000 (wgt'ed) examples reached here.  /* #pos=5 */
+
+
+% Clauses:
+
+father(A, B, 0) :- !. // Clause #1.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(underscore, underscore, 0) :-  /* #pos=5 */ 
+   !. // Flattened version of clause #1.
+
+
+% The unique flattened literals:
+
+% Saving model in: datasets/Father/train/models/bRDNs/father.model.ckpt
+% Time taken to learn 24 trees is 638 milliseconds.
+
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:9.628944098949432E-6
+Set score:0.0
+% Kept 5 of the 5 positive examples.
+% Kept 0 of the 0 negative examples.
+% Dataset size: 5
+Computing probabilities
+prob time:5 milliseconds
+No hidden examples for : father
+Time to build dataset: 5 milliseconds
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:9.628944098949432E-6
+Set score:0.0
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% Have these 5 positive seeds: 0 1 2 3 4
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% target           = father(D, E)
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.2E-7) for clause:  father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+% Unacceptable due to being the root node.
+% Most-general root: father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]  score = -Infinity
+
+% Consider expanding [#1 of outerLoop #1, bodyLen=0] 'father(_, _).  [covers 5.0/5.0 pos, 0.0/0.0 neg]' score=-Infinity
+%  At # nodes expanded = 1, |OPEN| = 0.  Pruned 0 variant children.  Sending 4 items to OPEN for evaluation and possible insertion.
+% Have created 4 valid-on-seeds descendants and have picked up 7 bad extensions.
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(A, _) :- male(A).  [covers 4.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(_, A) :- male(A).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.0200000000000002E-6) for clause:  father(A, B) :- childof(B, A).  [covers 5.0/5.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.23E-6) for clause:  father(A, _) :- siblingof(A, _).  [covers 3.0/5.0 pos, 0.0/0.0 neg]
+
+% The best node found: null
+
+% No acceptable clause was learned on this cycle of the ILP inner loop (LearnOneClause).
+% The closest-to-acceptable node found (score = -Infinity):
+%  null
+
+% ******************************************
+
+%  Have stopped ILP's outer loop because the tree-structured queue is empty.
+
+% ******************************************
+
+%%%%%  WILL-Produced Tree #25 @ 19:00:00 4/20/17.  [Using 1,501,720 memory cells.]  %%%%%
+
+
+% FOR father(A, B):
+%   return 0;  // std dev = 0.003, 5.000 (wgt'ed) examples reached here.  /* #pos=5 */
+
+
+% Clauses:
+
+father(A, B, 0) :- !. // Clause #1.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(underscore, underscore, 0) :-  /* #pos=5 */ 
+   !. // Flattened version of clause #1.
+
+
+% The unique flattened literals:
+
+% Saving model in: datasets/Father/train/models/bRDNs/father.model.ckpt
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  Final call for computing score for father.  %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+stepLength_tree1(1.0).
+stepLength_tree2(1.0).
+stepLength_tree3(1.0).
+stepLength_tree4(1.0).
+stepLength_tree5(1.0).
+stepLength_tree6(1.0).
+stepLength_tree7(1.0).
+stepLength_tree8(1.0).
+stepLength_tree9(1.0).
+stepLength_tree10(1.0).
+stepLength_tree11(1.0).
+stepLength_tree12(1.0).
+stepLength_tree13(1.0).
+stepLength_tree14(1.0).
+stepLength_tree15(1.0).
+stepLength_tree16(1.0).
+stepLength_tree17(1.0).
+stepLength_tree18(1.0).
+stepLength_tree19(1.0).
+stepLength_tree20(1.0).
+stepLength_tree21(1.0).
+stepLength_tree22(1.0).
+stepLength_tree23(1.0).
+stepLength_tree24(1.0).
+stepLength_tree25(1.0).
+
+logPrior(-1.8).
+father(D, E, Total) :- // A general accessor. 
+   father(D, E, 1000000, Total), !.
+father(D, E, Total) :- waitHere("This should not fail", father(D, E, Total)).
+
+father(D, E, TreesToUse, Total) :- // A tree-limited accessor (e.g., for tuning the number of trees to use).
+   logPrior(LogPrior),
+   getScore_father_tree1(D, E, TreesToUse, Total1),
+   getScore_father_tree2(D, E, TreesToUse, Total2),
+   getScore_father_tree3(D, E, TreesToUse, Total3),
+   getScore_father_tree4(D, E, TreesToUse, Total4),
+   getScore_father_tree5(D, E, TreesToUse, Total5),
+   getScore_father_tree6(D, E, TreesToUse, Total6),
+   getScore_father_tree7(D, E, TreesToUse, Total7),
+   getScore_father_tree8(D, E, TreesToUse, Total8),
+   getScore_father_tree9(D, E, TreesToUse, Total9),
+   getScore_father_tree10(D, E, TreesToUse, Total10),
+   getScore_father_tree11(D, E, TreesToUse, Total11),
+   getScore_father_tree12(D, E, TreesToUse, Total12),
+   getScore_father_tree13(D, E, TreesToUse, Total13),
+   getScore_father_tree14(D, E, TreesToUse, Total14),
+   getScore_father_tree15(D, E, TreesToUse, Total15),
+   getScore_father_tree16(D, E, TreesToUse, Total16),
+   getScore_father_tree17(D, E, TreesToUse, Total17),
+   getScore_father_tree18(D, E, TreesToUse, Total18),
+   getScore_father_tree19(D, E, TreesToUse, Total19),
+   getScore_father_tree20(D, E, TreesToUse, Total20),
+   getScore_father_tree21(D, E, TreesToUse, Total21),
+   getScore_father_tree22(D, E, TreesToUse, Total22),
+   getScore_father_tree23(D, E, TreesToUse, Total23),
+   getScore_father_tree24(D, E, TreesToUse, Total24),
+   getScore_father_tree25(D, E, TreesToUse, Total25),
+   Total is LogPrior + Total1 + Total2 + Total3 + Total4 + Total5 + Total6 + Total7 + Total8 + Total9 + Total10 + Total11 + Total12 + Total13 + Total14 + Total15 + Total16 + Total17 + Total18 + Total19 + Total20 + Total21 + Total22 + Total23 + Total24 + Total25,
+   !.
+father(D, E, TreesToUse, Total) :- waitHere("This should not fail", father(D, E, TreesToUse, Total)).
+
+getScore_father_tree1(D, E, TreesToUse, 0.0) :- 1 > TreesToUse, !.
+getScore_father_tree1(D, E, TreesToUse, Total1) :- father_tree1(D, E, Total), stepLength_tree1(StepLen), Total1 is Total * StepLen.
+
+getScore_father_tree2(D, E, TreesToUse, 0.0) :- 2 > TreesToUse, !.
+getScore_father_tree2(D, E, TreesToUse, Total2) :- father_tree2(D, E, Total), stepLength_tree2(StepLen), Total2 is Total * StepLen.
+
+getScore_father_tree3(D, E, TreesToUse, 0.0) :- 3 > TreesToUse, !.
+getScore_father_tree3(D, E, TreesToUse, Total3) :- father_tree3(D, E, Total), stepLength_tree3(StepLen), Total3 is Total * StepLen.
+
+getScore_father_tree4(D, E, TreesToUse, 0.0) :- 4 > TreesToUse, !.
+getScore_father_tree4(D, E, TreesToUse, Total4) :- father_tree4(D, E, Total), stepLength_tree4(StepLen), Total4 is Total * StepLen.
+
+getScore_father_tree5(D, E, TreesToUse, 0.0) :- 5 > TreesToUse, !.
+getScore_father_tree5(D, E, TreesToUse, Total5) :- father_tree5(D, E, Total), stepLength_tree5(StepLen), Total5 is Total * StepLen.
+
+getScore_father_tree6(D, E, TreesToUse, 0.0) :- 6 > TreesToUse, !.
+getScore_father_tree6(D, E, TreesToUse, Total6) :- father_tree6(D, E, Total), stepLength_tree6(StepLen), Total6 is Total * StepLen.
+
+getScore_father_tree7(D, E, TreesToUse, 0.0) :- 7 > TreesToUse, !.
+getScore_father_tree7(D, E, TreesToUse, Total7) :- father_tree7(D, E, Total), stepLength_tree7(StepLen), Total7 is Total * StepLen.
+
+getScore_father_tree8(D, E, TreesToUse, 0.0) :- 8 > TreesToUse, !.
+getScore_father_tree8(D, E, TreesToUse, Total8) :- father_tree8(D, E, Total), stepLength_tree8(StepLen), Total8 is Total * StepLen.
+
+getScore_father_tree9(D, E, TreesToUse, 0.0) :- 9 > TreesToUse, !.
+getScore_father_tree9(D, E, TreesToUse, Total9) :- father_tree9(D, E, Total), stepLength_tree9(StepLen), Total9 is Total * StepLen.
+
+getScore_father_tree10(D, E, TreesToUse, 0.0) :- 10 > TreesToUse, !.
+getScore_father_tree10(D, E, TreesToUse, Total10) :- father_tree10(D, E, Total), stepLength_tree10(StepLen), Total10 is Total * StepLen.
+
+getScore_father_tree11(D, E, TreesToUse, 0.0) :- 11 > TreesToUse, !.
+getScore_father_tree11(D, E, TreesToUse, Total11) :- father_tree11(D, E, Total), stepLength_tree11(StepLen), Total11 is Total * StepLen.
+
+getScore_father_tree12(D, E, TreesToUse, 0.0) :- 12 > TreesToUse, !.
+getScore_father_tree12(D, E, TreesToUse, Total12) :- father_tree12(D, E, Total), stepLength_tree12(StepLen), Total12 is Total * StepLen.
+
+getScore_father_tree13(D, E, TreesToUse, 0.0) :- 13 > TreesToUse, !.
+getScore_father_tree13(D, E, TreesToUse, Total13) :- father_tree13(D, E, Total), stepLength_tree13(StepLen), Total13 is Total * StepLen.
+
+getScore_father_tree14(D, E, TreesToUse, 0.0) :- 14 > TreesToUse, !.
+getScore_father_tree14(D, E, TreesToUse, Total14) :- father_tree14(D, E, Total), stepLength_tree14(StepLen), Total14 is Total * StepLen.
+
+getScore_father_tree15(D, E, TreesToUse, 0.0) :- 15 > TreesToUse, !.
+getScore_father_tree15(D, E, TreesToUse, Total15) :- father_tree15(D, E, Total), stepLength_tree15(StepLen), Total15 is Total * StepLen.
+
+getScore_father_tree16(D, E, TreesToUse, 0.0) :- 16 > TreesToUse, !.
+getScore_father_tree16(D, E, TreesToUse, Total16) :- father_tree16(D, E, Total), stepLength_tree16(StepLen), Total16 is Total * StepLen.
+
+getScore_father_tree17(D, E, TreesToUse, 0.0) :- 17 > TreesToUse, !.
+getScore_father_tree17(D, E, TreesToUse, Total17) :- father_tree17(D, E, Total), stepLength_tree17(StepLen), Total17 is Total * StepLen.
+
+getScore_father_tree18(D, E, TreesToUse, 0.0) :- 18 > TreesToUse, !.
+getScore_father_tree18(D, E, TreesToUse, Total18) :- father_tree18(D, E, Total), stepLength_tree18(StepLen), Total18 is Total * StepLen.
+
+getScore_father_tree19(D, E, TreesToUse, 0.0) :- 19 > TreesToUse, !.
+getScore_father_tree19(D, E, TreesToUse, Total19) :- father_tree19(D, E, Total), stepLength_tree19(StepLen), Total19 is Total * StepLen.
+
+getScore_father_tree20(D, E, TreesToUse, 0.0) :- 20 > TreesToUse, !.
+getScore_father_tree20(D, E, TreesToUse, Total20) :- father_tree20(D, E, Total), stepLength_tree20(StepLen), Total20 is Total * StepLen.
+
+getScore_father_tree21(D, E, TreesToUse, 0.0) :- 21 > TreesToUse, !.
+getScore_father_tree21(D, E, TreesToUse, Total21) :- father_tree21(D, E, Total), stepLength_tree21(StepLen), Total21 is Total * StepLen.
+
+getScore_father_tree22(D, E, TreesToUse, 0.0) :- 22 > TreesToUse, !.
+getScore_father_tree22(D, E, TreesToUse, Total22) :- father_tree22(D, E, Total), stepLength_tree22(StepLen), Total22 is Total * StepLen.
+
+getScore_father_tree23(D, E, TreesToUse, 0.0) :- 23 > TreesToUse, !.
+getScore_father_tree23(D, E, TreesToUse, Total23) :- father_tree23(D, E, Total), stepLength_tree23(StepLen), Total23 is Total * StepLen.
+
+getScore_father_tree24(D, E, TreesToUse, 0.0) :- 24 > TreesToUse, !.
+getScore_father_tree24(D, E, TreesToUse, Total24) :- father_tree24(D, E, Total), stepLength_tree24(StepLen), Total24 is Total * StepLen.
+
+getScore_father_tree25(D, E, TreesToUse, 0.0) :- 25 > TreesToUse, !.
+getScore_father_tree25(D, E, TreesToUse, Total25) :- father_tree25(D, E, Total), stepLength_tree25(StepLen), Total25 is Total * StepLen.
+
+flattenedLiteralsInThisSetOfTrees(0, []).
+%      addToQueueOfTreeStructuredLearningTasks (level=0; score=1.797693135e+308)
+%         ILP node to extend: null
+%      Insert tree-structured search node (@ level = 0 and with score = 1.797693135e+308) into the LAST position (#1) in the search queue.
+Variance:2.4072406813502312E-4
+Set score:0.0
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% Have these 5 positive seeds: 0 4 5 8 9
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+
+% target           = father(D, E)
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.2E-7) for clause:  father(_, _).  [covers 25.0/25.0 pos, 0.0/0.0 neg]
+% Unacceptable due to being the root node.
+% Most-general root: father(_, _).  [covers 25.0/25.0 pos, 0.0/0.0 neg]  score = -Infinity
+
+% Consider expanding [#1 of outerLoop #1, bodyLen=0] 'father(_, _).  [covers 25.0/25.0 pos, 0.0/0.0 neg]' score=-Infinity
+%  At # nodes expanded = 1, |OPEN| = 0.  Pruned 0 variant children.  Sending 4 items to OPEN for evaluation and possible insertion.
+% Have created 4 valid-on-seeds descendants and have picked up 7 bad extensions.
+%     Score = -0.005016 (regressionFit = 0.005015, penalties=1.12E-6) for clause:  father(A, _) :- male(A).  [covers 20.0/25.0 pos, 0.0/0.0 neg]
+% Gleaner: New best node found (score = -0.005016): father(A, _) :- male(A).  [covers 20.0/25.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.12E-6) for clause:  father(_, A) :- male(A).  [covers 25.0/25.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=1.0200000000000002E-6) for clause:  father(A, B) :- childof(B, A).  [covers 25.0/25.0 pos, 0.0/0.0 neg]
+%     Score = -0.000001 (regressionFit = 7.45058e-09, penalties=1.23E-6) for clause:  father(A, _) :- siblingof(A, _).  [covers 15.0/25.0 pos, 0.0/0.0 neg]
+% Gleaner: New best node found (score = -0.000001): father(A, _) :- siblingof(A, _).  [covers 15.0/25.0 pos, 0.0/0.0 neg]
+
+% The best node found: father(A, _) :- siblingof(A, _).  [covers 15.0/25.0 pos, 0.0/0.0 neg]
+
+% The best node found: father(A, _) :- siblingof(A, _).  [covers 15.0/25.0 pos, 0.0/0.0 neg]
+
+% Expanding node at Level 0 with score = 1.797693e+308.
+% Will extend: father(A, _) :- siblingof(A, _).  [covers 15.0/25.0 pos, 0.0/0.0 neg]
+Comparing variance: 9.934107462565104E-10 to score=0.0 #egs=15.0
+Comparing variance: -7.450580596923829E-10 to score=0.0 #egs=10.0
+%   Creating a TRUE-branch interior node with wgtedCountTrueBranchPos = 15.0
+%      addToQueueOfTreeStructuredLearningTasks (level=1; score=-9.93411e-10)
+%         ILP node to extend: father(A, _) :- siblingof(A, _).  [covers 15.0/25.0 pos, 0.0/0.0 neg]
+%      Insert tree-structured search node (@ level = 1 and with score = -9.93411e-10) into the LAST position (#1) in the search queue.
+%   Creating a FALSE-branch leaf because good enough fit since score < 0.0
+
+% Time for loop #1: 11 milliseconds.
+% Internal node max length = 1
+% Max tree depth in lits   = 12
+% Max tree depth in nodes  = 3
+% Max number of clauses    = 8
+
+% On cycle #1, the best clause found is:
+%      father(A, _) :- siblingof(A, _).  [covers 15.0/25.0 pos, 0.0/0.0 neg]
+% This clause covers 15 positive examples, of which 15 are newly covered.
+% It also covers 0 negative examples, of which 0 are newly covered.
+
+% Working on expanding this node: 'father(A, _) :- siblingof(A, _).  [covers 15.0/15.0 pos, 0.0/0.0 neg]'
+%     Score = -0.000001 (regressionFit = 7.45058e-09, penalties=1.23E-6) for clause:  father(A, _) :- siblingof(A, _).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+
+% Have these 5 positive seeds: 0 3 4 6 7
+% [AdviceProcessor]  Generated 0 clauses at relevance level STRONGLY_IRRELEVANT.
+% Gleaner: New best node found (score = -0.000001): father(A, _) :- siblingof(A, _).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+
+% Consider expanding [#1 of outerLoop #2, bodyLen=1] 'father(A, _) :- siblingof(A, _).  [covers 15.0/15.0 pos, 0.0/0.0 neg]' score=-1.237450580596924E-6
+%  At # nodes expanded = 1, |OPEN| = 0.  Pruned 0 variant children.  Sending 8 items to OPEN for evaluation and possible insertion.
+% Have created 8 valid-on-seeds descendants and have picked up 14 bad extensions.
+%     Score = -0.000002 (regressionFit = 1.30385e-08, penalties=2.2300000000000002E-6) for clause:  father(A, _) :- siblingof(A, _), male(A).  [covers 10.0/15.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.1300000000000004E-6) for clause:  father(A, B) :- siblingof(A, _), male(B).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.1300000000000004E-6) for clause:  father(A, _) :- siblingof(A, B), male(B).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.1300000000000004E-6) for clause:  father(A, B) :- siblingof(A, _), childof(B, A).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.0300000000000005E-6) for clause:  father(A, B) :- siblingof(A, C), childof(B, C).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.24E-6) for clause:  father(A, _) :- siblingof(A, _), siblingof(A, _).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.0300000000000005E-6) for clause:  father(A, _) :- siblingof(A, B), siblingof(B, A).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+%     Score = -Infinity (regressionFit = Infinity, penalties=2.1400000000000003E-6) for clause:  father(A, _) :- siblingof(A, B), siblingof(B, _).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+
+% The best node found: father(A, _) :- siblingof(A, _).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+
+% No acceptable clause was learned on this cycle of the ILP inner loop (LearnOneClause).
+% The closest-to-acceptable node found (score = -1.237e-06):
+%  father(A, _) :- siblingof(A, _).  [covers 15.0/15.0 pos, 0.0/0.0 neg]
+Created a leaf under (father(D, E) :- siblingof(D, Anon1611))
+
+% ******************************************
+
+%  Have stopped ILP's outer loop because the tree-structured queue is empty.
+
+% ******************************************
+
+%%%%%  WILL-Produced Tree Combined @ 19:00:00 4/20/17.  [Using 1,536,368 memory cells.]  %%%%%
+
+
+% FOR father(A, B):
+%   if ( siblingof(A, C) )
+%   then return 1490.773880606601;  // std dev = 3.05e-05, 15.000 (wgt'ed) examples reached here.  /* #pos=15 */
+%   else return 1490.8055510114152;  // std dev = 0.000, 10.000 (wgt'ed) examples reached here.  /* #pos=10 */
+
+
+% Clauses:
+
+father(A, B, 1490.773880606601) :- 
+     siblingof(A, C), 
+     !. // Clause #1.
+
+father(A, B, 1490.8055510114152) :- !. // Clause #2.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(a, underscore, 1490.773880606601) :-  /* #pos=15 */ 
+   siblingof(a, underscore),
+   !. // Flattened version of clause #1.
+
+flattened_father(underscore, underscore, 1490.8055510114152) :-  /* #pos=10 */ 
+   !. // Flattened version of clause #2.
+
+
+% The unique flattened literals:
+%   siblingof(a, underscore)
+
+% Time taken to learn model for 'father': 848 milliseconds.
+% Saving model in: datasets/Father/train/models/bRDNs/father.model
+cached groundings hit: 0
+Misses: 0
+
+% Total learning time (25 trees): 1.150 seconds.

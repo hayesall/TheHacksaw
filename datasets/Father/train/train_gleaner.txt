@@ -1,0 +1,71 @@
+////// Learned from a dataset containing 15 positive (15.0 weighted sum) and 0 negative (0.0 wgt'ed) examples.
+////// The minimal (wgt'ed) coverage = 3.000, the maximal (wgt'ed) NEG coverage = 0.499, and the minimal (wgt'ed) precision = 0.001 (using m = 0.1)
+
+usePrologVariables: true.
+
+
+////////////////////////////////////////////////////////////////////////////////
+////
+////     Gleaner for: allPossibleMarkers
+////
+////////////////////////////////////////////////////////////////////////////////
+
+// Best in (weighted) recall bin #11, (0.55, 0.6], from 'outerLoop #1, null' and covering 15.0 wgt'ed positive and 0.0 wgt'ed negative examples:
+//    Wgt'ed recall = 0.598, precision = 0.993, and F1 = 0.746 - learned after 5 total and 3 acceptable nodes.  Node score = -1.237450580596924E-6
+
+ FOR father(D, E) IF (siblingof(D, Anon1611)) THEN output = 1,490.773881 ELSE output = 1,490.805551;
+
+// Best in (weighted) recall bin #13, (0.65, 0.7], from 'outerLoop #2, null' and covering 10.0 wgt'ed positive and 0.0 wgt'ed negative examples:
+//    Wgt'ed recall = 0.662, precision = 0.990, and F1 = 0.794 - learned after 2 total and 1 acceptable nodes.  Node score = -2.243038516044617E-6
+
+ FOR father(D, E) IF (siblingof(D, Anon1611), male(D)) THEN output = 1,490.773881 ELSE output = 1,490.773881;
+
+// Best in (weighted) recall bin #15, (0.75, 0.8], from 'outerLoop #1, null' and covering 20.0 wgt'ed positive and 0.0 wgt'ed negative examples:
+//    Wgt'ed recall = 0.797, precision = 0.995, and F1 = 0.885 - learned after 2 total and 0 acceptable nodes.  Node score = -0.005016219421143532
+
+ FOR father(D, E) IF (male(D)) THEN output = 1,490.789716 ELSE output = 1,490.773881;
+
+// Best in (weighted) recall bin #19, (0.95, 1.01], from 'outerLoop #2, null' and covering 15.0 wgt'ed positive and 0.0 wgt'ed negative examples:
+//    Wgt'ed recall = 0.993, precision = 0.993, and F1 = 0.993 - learned after 1 total and 0 acceptable nodes.  Node score = -1.237450580596924E-6
+
+ FOR father(D, E) IF (siblingof(D, Anon1611)) THEN output = 1,490.773881 ELSE output = 1,490.805551;
+
+
+////////////////////////////////////////////////////////////////////////////////
+////
+////     Gleaner for: outerLoop #1, null
+////
+////////////////////////////////////////////////////////////////////////////////
+
+// Best in (weighted) recall bin #11, (0.55, 0.6], from 'outerLoop #1, null' and covering 15.0 wgt'ed positive and 0.0 wgt'ed negative examples:
+//    Wgt'ed recall = 0.598, precision = 0.993, and F1 = 0.746 - learned after 5 total and 3 acceptable nodes.  Node score = -1.237450580596924E-6
+
+ FOR father(D, E) IF (siblingof(D, Anon1611)) THEN output = 1,490.773881 ELSE output = 1,490.805551;
+
+// Best in (weighted) recall bin #15, (0.75, 0.8], from 'outerLoop #1, null' and covering 20.0 wgt'ed positive and 0.0 wgt'ed negative examples:
+//    Wgt'ed recall = 0.797, precision = 0.995, and F1 = 0.885 - learned after 2 total and 0 acceptable nodes.  Node score = -0.005016219421143532
+
+ FOR father(D, E) IF (male(D)) THEN output = 1,490.789716 ELSE output = 1,490.773881;
+
+// Best in (weighted) recall bin #19, (0.95, 1.01], from 'outerLoop #1, null' and covering 5.0 wgt'ed positive and 0.0 wgt'ed negative examples:
+//    Wgt'ed recall = 0.980, precision = 0.980, and F1 = 0.980 - learned after 3 total and 1 acceptable nodes.  Node score = -Infinity
+
+ FOR father(D, E) IF (male(E)) THEN output = 298.157310 ELSE output = 0.000000;
+
+
+////////////////////////////////////////////////////////////////////////////////
+////
+////     Gleaner for: outerLoop #2, null
+////
+////////////////////////////////////////////////////////////////////////////////
+
+// Best in (weighted) recall bin #13, (0.65, 0.7], from 'outerLoop #2, null' and covering 10.0 wgt'ed positive and 0.0 wgt'ed negative examples:
+//    Wgt'ed recall = 0.662, precision = 0.990, and F1 = 0.794 - learned after 2 total and 1 acceptable nodes.  Node score = -2.243038516044617E-6
+
+ FOR father(D, E) IF (siblingof(D, Anon1611), male(D)) THEN output = 1,490.773881 ELSE output = 1,490.773881;
+
+// Best in (weighted) recall bin #19, (0.95, 1.01], from 'outerLoop #2, null' and covering 15.0 wgt'ed positive and 0.0 wgt'ed negative examples:
+//    Wgt'ed recall = 0.993, precision = 0.993, and F1 = 0.993 - learned after 1 total and 0 acceptable nodes.  Node score = -1.237450580596924E-6
+
+ FOR father(D, E) IF (siblingof(D, Anon1611)) THEN output = 1,490.773881 ELSE output = 1,490.805551;
+
