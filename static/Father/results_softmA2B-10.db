@@ -1,0 +1,7 @@
+father(elizabeth, mrbennet) 0.9983440685380692
+father(jane, mrbennet) 0.9983440685380692
+father(charlotte, mrlucas) 0.9984554828031741
+father(charlotte, mrsbennet) 0.9999990015339397
+father(jane, mrlucas) 0.9999969451811707
+father(mrsbennet, mrbennet) 0.9999969451811707
+father(jane, elizabeth) 0.9999990015339397

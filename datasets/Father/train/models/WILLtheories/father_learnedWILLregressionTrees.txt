@@ -1,0 +1,290 @@
+usePrologVariables: true.
+
+% maxTreeDepthInNodes                 = 3
+% maxTreeDepthInLiterals              = 12
+% maxNumberOfLiteralsAtAnInteriorNode = 1
+% maxFreeBridgersInBody               = 1
+% maxNumberOfClauses                  = 5
+% maxNodesToConsider                  = 10
+% maxNodesToCreate                    = 10,000
+% maxAcceptableNodeScoreToStop        = 0.003
+% negPosRatio                         = 2.000
+% testNegPosRatio                     = -1.000
+% # of pos examples                   = 19
+% # of neg examples                   = 0
+
+
+
+//// Loaded checkpoint from datasets/Father/train/models/bRDNs/father.model.ckpt at 18:59:59 4/20/17.
+//// Number of trees loaded:20
+
+//// Also loaded 0 flattened literals from datasets/Father/train/models/bRDNs/father.model.ckptLits
+
+%%%%%  WILL-Produced Tree #21 @ 18:59:59 4/20/17.  [Using 3,351,992 memory cells.]  %%%%%
+
+% FOR father(A, B):
+%   return 0;  // std dev = 0.003, 5.000 (wgt'ed) examples reached here.  /* #pos=5 */
+
+
+% Clauses:
+
+father(A, B, 0) :- !. // Clause #1.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(underscore, underscore, 0) :-  /* #pos=5 */ 
+   !. // Flattened version of clause #1.
+
+
+% The unique flattened literals:
+
+%%%%%  WILL-Produced Tree #22 @ 18:59:59 4/20/17.  [Using 1,529,064 memory cells.]  %%%%%
+
+% FOR father(A, B):
+%   return 0;  // std dev = 0.003, 5.000 (wgt'ed) examples reached here.  /* #pos=5 */
+
+
+% Clauses:
+
+father(A, B, 0) :- !. // Clause #1.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(underscore, underscore, 0) :-  /* #pos=5 */ 
+   !. // Flattened version of clause #1.
+
+
+% The unique flattened literals:
+
+%%%%%  WILL-Produced Tree #23 @ 18:59:59 4/20/17.  [Using 1,490,208 memory cells.]  %%%%%
+
+% FOR father(A, B):
+%   return 0;  // std dev = 0.003, 5.000 (wgt'ed) examples reached here.  /* #pos=5 */
+
+
+% Clauses:
+
+father(A, B, 0) :- !. // Clause #1.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(underscore, underscore, 0) :-  /* #pos=5 */ 
+   !. // Flattened version of clause #1.
+
+
+% The unique flattened literals:
+
+%%%%%  WILL-Produced Tree #24 @ 18:59:59 4/20/17.  [Using 1,493,120 memory cells.]  %%%%%
+
+% FOR father(A, B):
+%   return 0;  // std dev = 0.003, 5.000 (wgt'ed) examples reached here.  /* #pos=5 */
+
+
+% Clauses:
+
+father(A, B, 0) :- !. // Clause #1.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(underscore, underscore, 0) :-  /* #pos=5 */ 
+   !. // Flattened version of clause #1.
+
+
+% The unique flattened literals:
+
+%%%%%  WILL-Produced Tree #25 @ 19:00:00 4/20/17.  [Using 1,501,720 memory cells.]  %%%%%
+
+% FOR father(A, B):
+%   return 0;  // std dev = 0.003, 5.000 (wgt'ed) examples reached here.  /* #pos=5 */
+
+
+% Clauses:
+
+father(A, B, 0) :- !. // Clause #1.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(underscore, underscore, 0) :-  /* #pos=5 */ 
+   !. // Flattened version of clause #1.
+
+
+% The unique flattened literals:
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%  Final call for computing score for father.  %%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+stepLength_tree1(1.0).
+stepLength_tree2(1.0).
+stepLength_tree3(1.0).
+stepLength_tree4(1.0).
+stepLength_tree5(1.0).
+stepLength_tree6(1.0).
+stepLength_tree7(1.0).
+stepLength_tree8(1.0).
+stepLength_tree9(1.0).
+stepLength_tree10(1.0).
+stepLength_tree11(1.0).
+stepLength_tree12(1.0).
+stepLength_tree13(1.0).
+stepLength_tree14(1.0).
+stepLength_tree15(1.0).
+stepLength_tree16(1.0).
+stepLength_tree17(1.0).
+stepLength_tree18(1.0).
+stepLength_tree19(1.0).
+stepLength_tree20(1.0).
+stepLength_tree21(1.0).
+stepLength_tree22(1.0).
+stepLength_tree23(1.0).
+stepLength_tree24(1.0).
+stepLength_tree25(1.0).
+
+logPrior(-1.8).
+father(D, E, Total) :- // A general accessor. 
+   father(D, E, 1000000, Total), !.
+father(D, E, Total) :- waitHere("This should not fail", father(D, E, Total)).
+
+father(D, E, TreesToUse, Total) :- // A tree-limited accessor (e.g., for tuning the number of trees to use).
+   logPrior(LogPrior),
+   getScore_father_tree1(D, E, TreesToUse, Total1),
+   getScore_father_tree2(D, E, TreesToUse, Total2),
+   getScore_father_tree3(D, E, TreesToUse, Total3),
+   getScore_father_tree4(D, E, TreesToUse, Total4),
+   getScore_father_tree5(D, E, TreesToUse, Total5),
+   getScore_father_tree6(D, E, TreesToUse, Total6),
+   getScore_father_tree7(D, E, TreesToUse, Total7),
+   getScore_father_tree8(D, E, TreesToUse, Total8),
+   getScore_father_tree9(D, E, TreesToUse, Total9),
+   getScore_father_tree10(D, E, TreesToUse, Total10),
+   getScore_father_tree11(D, E, TreesToUse, Total11),
+   getScore_father_tree12(D, E, TreesToUse, Total12),
+   getScore_father_tree13(D, E, TreesToUse, Total13),
+   getScore_father_tree14(D, E, TreesToUse, Total14),
+   getScore_father_tree15(D, E, TreesToUse, Total15),
+   getScore_father_tree16(D, E, TreesToUse, Total16),
+   getScore_father_tree17(D, E, TreesToUse, Total17),
+   getScore_father_tree18(D, E, TreesToUse, Total18),
+   getScore_father_tree19(D, E, TreesToUse, Total19),
+   getScore_father_tree20(D, E, TreesToUse, Total20),
+   getScore_father_tree21(D, E, TreesToUse, Total21),
+   getScore_father_tree22(D, E, TreesToUse, Total22),
+   getScore_father_tree23(D, E, TreesToUse, Total23),
+   getScore_father_tree24(D, E, TreesToUse, Total24),
+   getScore_father_tree25(D, E, TreesToUse, Total25),
+   Total is LogPrior + Total1 + Total2 + Total3 + Total4 + Total5 + Total6 + Total7 + Total8 + Total9 + Total10 + Total11 + Total12 + Total13 + Total14 + Total15 + Total16 + Total17 + Total18 + Total19 + Total20 + Total21 + Total22 + Total23 + Total24 + Total25,
+   !.
+father(D, E, TreesToUse, Total) :- waitHere("This should not fail", father(D, E, TreesToUse, Total)).
+
+getScore_father_tree1(D, E, TreesToUse, 0.0) :- 1 > TreesToUse, !.
+getScore_father_tree1(D, E, TreesToUse, Total1) :- father_tree1(D, E, Total), stepLength_tree1(StepLen), Total1 is Total * StepLen.
+
+getScore_father_tree2(D, E, TreesToUse, 0.0) :- 2 > TreesToUse, !.
+getScore_father_tree2(D, E, TreesToUse, Total2) :- father_tree2(D, E, Total), stepLength_tree2(StepLen), Total2 is Total * StepLen.
+
+getScore_father_tree3(D, E, TreesToUse, 0.0) :- 3 > TreesToUse, !.
+getScore_father_tree3(D, E, TreesToUse, Total3) :- father_tree3(D, E, Total), stepLength_tree3(StepLen), Total3 is Total * StepLen.
+
+getScore_father_tree4(D, E, TreesToUse, 0.0) :- 4 > TreesToUse, !.
+getScore_father_tree4(D, E, TreesToUse, Total4) :- father_tree4(D, E, Total), stepLength_tree4(StepLen), Total4 is Total * StepLen.
+
+getScore_father_tree5(D, E, TreesToUse, 0.0) :- 5 > TreesToUse, !.
+getScore_father_tree5(D, E, TreesToUse, Total5) :- father_tree5(D, E, Total), stepLength_tree5(StepLen), Total5 is Total * StepLen.
+
+getScore_father_tree6(D, E, TreesToUse, 0.0) :- 6 > TreesToUse, !.
+getScore_father_tree6(D, E, TreesToUse, Total6) :- father_tree6(D, E, Total), stepLength_tree6(StepLen), Total6 is Total * StepLen.
+
+getScore_father_tree7(D, E, TreesToUse, 0.0) :- 7 > TreesToUse, !.
+getScore_father_tree7(D, E, TreesToUse, Total7) :- father_tree7(D, E, Total), stepLength_tree7(StepLen), Total7 is Total * StepLen.
+
+getScore_father_tree8(D, E, TreesToUse, 0.0) :- 8 > TreesToUse, !.
+getScore_father_tree8(D, E, TreesToUse, Total8) :- father_tree8(D, E, Total), stepLength_tree8(StepLen), Total8 is Total * StepLen.
+
+getScore_father_tree9(D, E, TreesToUse, 0.0) :- 9 > TreesToUse, !.
+getScore_father_tree9(D, E, TreesToUse, Total9) :- father_tree9(D, E, Total), stepLength_tree9(StepLen), Total9 is Total * StepLen.
+
+getScore_father_tree10(D, E, TreesToUse, 0.0) :- 10 > TreesToUse, !.
+getScore_father_tree10(D, E, TreesToUse, Total10) :- father_tree10(D, E, Total), stepLength_tree10(StepLen), Total10 is Total * StepLen.
+
+getScore_father_tree11(D, E, TreesToUse, 0.0) :- 11 > TreesToUse, !.
+getScore_father_tree11(D, E, TreesToUse, Total11) :- father_tree11(D, E, Total), stepLength_tree11(StepLen), Total11 is Total * StepLen.
+
+getScore_father_tree12(D, E, TreesToUse, 0.0) :- 12 > TreesToUse, !.
+getScore_father_tree12(D, E, TreesToUse, Total12) :- father_tree12(D, E, Total), stepLength_tree12(StepLen), Total12 is Total * StepLen.
+
+getScore_father_tree13(D, E, TreesToUse, 0.0) :- 13 > TreesToUse, !.
+getScore_father_tree13(D, E, TreesToUse, Total13) :- father_tree13(D, E, Total), stepLength_tree13(StepLen), Total13 is Total * StepLen.
+
+getScore_father_tree14(D, E, TreesToUse, 0.0) :- 14 > TreesToUse, !.
+getScore_father_tree14(D, E, TreesToUse, Total14) :- father_tree14(D, E, Total), stepLength_tree14(StepLen), Total14 is Total * StepLen.
+
+getScore_father_tree15(D, E, TreesToUse, 0.0) :- 15 > TreesToUse, !.
+getScore_father_tree15(D, E, TreesToUse, Total15) :- father_tree15(D, E, Total), stepLength_tree15(StepLen), Total15 is Total * StepLen.
+
+getScore_father_tree16(D, E, TreesToUse, 0.0) :- 16 > TreesToUse, !.
+getScore_father_tree16(D, E, TreesToUse, Total16) :- father_tree16(D, E, Total), stepLength_tree16(StepLen), Total16 is Total * StepLen.
+
+getScore_father_tree17(D, E, TreesToUse, 0.0) :- 17 > TreesToUse, !.
+getScore_father_tree17(D, E, TreesToUse, Total17) :- father_tree17(D, E, Total), stepLength_tree17(StepLen), Total17 is Total * StepLen.
+
+getScore_father_tree18(D, E, TreesToUse, 0.0) :- 18 > TreesToUse, !.
+getScore_father_tree18(D, E, TreesToUse, Total18) :- father_tree18(D, E, Total), stepLength_tree18(StepLen), Total18 is Total * StepLen.
+
+getScore_father_tree19(D, E, TreesToUse, 0.0) :- 19 > TreesToUse, !.
+getScore_father_tree19(D, E, TreesToUse, Total19) :- father_tree19(D, E, Total), stepLength_tree19(StepLen), Total19 is Total * StepLen.
+
+getScore_father_tree20(D, E, TreesToUse, 0.0) :- 20 > TreesToUse, !.
+getScore_father_tree20(D, E, TreesToUse, Total20) :- father_tree20(D, E, Total), stepLength_tree20(StepLen), Total20 is Total * StepLen.
+
+getScore_father_tree21(D, E, TreesToUse, 0.0) :- 21 > TreesToUse, !.
+getScore_father_tree21(D, E, TreesToUse, Total21) :- father_tree21(D, E, Total), stepLength_tree21(StepLen), Total21 is Total * StepLen.
+
+getScore_father_tree22(D, E, TreesToUse, 0.0) :- 22 > TreesToUse, !.
+getScore_father_tree22(D, E, TreesToUse, Total22) :- father_tree22(D, E, Total), stepLength_tree22(StepLen), Total22 is Total * StepLen.
+
+getScore_father_tree23(D, E, TreesToUse, 0.0) :- 23 > TreesToUse, !.
+getScore_father_tree23(D, E, TreesToUse, Total23) :- father_tree23(D, E, Total), stepLength_tree23(StepLen), Total23 is Total * StepLen.
+
+getScore_father_tree24(D, E, TreesToUse, 0.0) :- 24 > TreesToUse, !.
+getScore_father_tree24(D, E, TreesToUse, Total24) :- father_tree24(D, E, Total), stepLength_tree24(StepLen), Total24 is Total * StepLen.
+
+getScore_father_tree25(D, E, TreesToUse, 0.0) :- 25 > TreesToUse, !.
+getScore_father_tree25(D, E, TreesToUse, Total25) :- father_tree25(D, E, Total), stepLength_tree25(StepLen), Total25 is Total * StepLen.
+
+flattenedLiteralsInThisSetOfTrees(0, []).
+
+%%%%%  WILL-Produced Tree Combined @ 19:00:00 4/20/17.  [Using 1,536,368 memory cells.]  %%%%%
+
+% FOR father(A, B):
+%   if ( siblingof(A, C) )
+%   then return 1490.773880606601;  // std dev = 3.05e-05, 15.000 (wgt'ed) examples reached here.  /* #pos=15 */
+%   else return 1490.8055510114152;  // std dev = 0.000, 10.000 (wgt'ed) examples reached here.  /* #pos=10 */
+
+
+% Clauses:
+
+father(A, B, 1490.773880606601) :- 
+     siblingof(A, C), 
+     !. // Clause #1.
+
+father(A, B, 1490.8055510114152) :- !. // Clause #2.
+
+
+% The flattened versions of these clauses:
+
+flattened_father(a, underscore, 1490.773880606601) :-  /* #pos=15 */ 
+   siblingof(a, underscore),
+   !. // Flattened version of clause #1.
+
+flattened_father(underscore, underscore, 1490.8055510114152) :-  /* #pos=10 */ 
+   !. // Flattened version of clause #2.
+
+
+% The unique flattened literals:
+%   siblingof(a, underscore)
