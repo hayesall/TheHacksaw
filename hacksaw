@@ -55,7 +55,6 @@ NAMES=(
 )
 
 ECHOS=(
-    # Father
     "Testing default functionality with boosted regression trees..."
     "Testing with boosting disabled (-noBoost)..."
     "Testing soft margin with alpha(0.5) and beta(-2)..."
@@ -66,7 +65,6 @@ ECHOS=(
 )
 
 TRAINS=(
-    # Father
     "java -jar $JAR -l -train datasets/Father/train/ -target father -trees 25"
     "java -jar $JAR -l -noBoost -train datasets/Father/train -target father"
     "java -jar $JAR -l -softm -alpha 0.5 -beta -2 -train datasets/Father/train -target father -trees 25"
@@ -77,7 +75,6 @@ TRAINS=(
 )
 
 TESTS=(
-    # Father
     "java -jar $JAR -i -model datasets/Father/train/models -test datasets/Father/test/ -target father -trees 25"
     "java -jar $JAR -i -model datasets/Father/train/models -test datasets/Father/test/ -target father"
     "java -jar $JAR -i -model datasets/Father/train/models -test datasets/Father/test/ -target father -trees 25"
@@ -88,7 +85,6 @@ TESTS=(
 )
 
 COMPARES=(
-    # Father
     "python compare.py datasets/Father/test/results_father.db static/Father/results_rdn.db"
     "python compare.py datasets/Father/test/results_father.db static/Father/results_rdn_noboost.db"
     "python compare.py datasets/Father/test/results_father.db static/Father/results_softmA0.5B-2.db"
@@ -98,12 +94,14 @@ COMPARES=(
     "python compare.py datasets/Father/test/results_father.db static/Father/results_regression.db"
 )
 
-EPOCHS=15
+EPOCHS=1
 # add an additional parameter to compare.py for changing the sensitivity threshold
 
 if [[ -e Results.txt ]]; then
     rm -f Results.txt
 fi
+
+rm -rf datasets/Father/models/*
 
 for ((j=0; j<${EPOCHS}; j++)); do
     for ((i=0; i<${#ECHOS[*]}; i++)); do
