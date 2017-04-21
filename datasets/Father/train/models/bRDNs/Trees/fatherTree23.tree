@@ -1,6 +1,0 @@
-setParam: stringsAreCaseSensitive = true.
-
-usePrologVariables: true.
-
-
-father(_, _, 0) /* #pos=5 */ .

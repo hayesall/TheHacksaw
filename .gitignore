@@ -1,3 +1,12 @@
 # files to ignore: any backups, class files
 *~
 *.class
+
+# ignore the models
+datasets/Father/train/models/*
+
+# ignore results, dribble, and gleaner
+datasets/Father/test/results_father.db
+datasets/Father/test/test_infer_dribble.txt
+datasets/Father/test/train_gleaner.txt
+datasets/Father/test/train_learn_dribble.txt
