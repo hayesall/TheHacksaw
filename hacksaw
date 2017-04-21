@@ -101,7 +101,7 @@ if [[ -e Results.txt ]]; then
     rm -f Results.txt
 fi
 
-rm -rf datasets/Father/models/*
+#rm -rf datasets/Father/models/*
 
 for ((j=0; j<${EPOCHS}; j++)); do
     for ((i=0; i<${#ECHOS[*]}; i++)); do
@@ -122,6 +122,10 @@ for ((j=0; j<${EPOCHS}; j++)); do
 	fi
     done
 done
+
+rm -f trainlog.txt
+rm -f testlog.txt
+
 exit 0
 
 #if [[ -e datasets/Father/test/results_father.db ]]; then
