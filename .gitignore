@@ -4,12 +4,23 @@
 
 # ignore the models
 datasets/Father/train/models/*
+datasets/Toy-Cancer/train/models/*
 
-# ignore log files, results, dribble, and gleaner
+# ignore log files, results, dribble, and gleaner for Father
 datasets/Father/test/results_father.db
 datasets/Father/test/test_infer_dribble.txt
 datasets/Father/train/train_gleaner.txt
 datasets/Father/train/train_learn_dribble.txt
+datasets/Father/train/.mln
+
+# ignore the same for Toy-Cancer
+datasets/Toy-Cancer/test/results_cancer.db
+datasets/Toy-Cancer/test/test_infer_dribble.txt
+datasets/Toy-Cancer/train/train_gleaner.txt
+datasets/Toy-Cancer/train/train_learn_dribble.txt
+datasets/Toy-Cancer/train/.mln
+
+# ignore semi-temporary files
 Results.txt
 testlog.txt
 trainlog.txt
