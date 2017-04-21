@@ -5,13 +5,11 @@
 # ignore the models
 datasets/Father/train/models/*
 
-# ignore results, dribble, and gleaner
+# ignore log files, results, dribble, and gleaner
 datasets/Father/test/results_father.db
 datasets/Father/test/test_infer_dribble.txt
-datasets/Father/test/train_gleaner.txt
-datasets/Father/test/train_learn_dribble.txt
-Results.txt
 datasets/Father/train/train_gleaner.txt
 datasets/Father/train/train_learn_dribble.txt
+Results.txt
 testlog.txt
 trainlog.txt
