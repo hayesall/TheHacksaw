@@ -1,6 +1,0 @@
-setParam: stringsAreCaseSensitive = true.
-
-usePrologVariables: true.
-
-
-(father(A, B, 0.08600914423178077) :- male(B), childof(B, A)).
