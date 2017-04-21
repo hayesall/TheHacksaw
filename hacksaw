@@ -44,57 +44,6 @@ else
     exit 2
 fi
 
-NAMES=(
-    "RDN-Boost"
-    "RDN-Boost with -noBoost"
-    "Soft Margin with alpha(0.5) and beta(-2)"
-    "Soft Margin with alpha(2) and beta(-10)"
-    "MLN-Boost"
-    "MLN-Boost with -mlnClause"
-    "LSTree Boosting Regression"
-)
-
-ECHOS=(
-    "Testing default functionality with boosted regression trees..."
-    "Testing with boosting disabled (-noBoost)..."
-    "Testing soft margin with alpha(0.5) and beta(-2)..."
-    "Testing soft margin with alpha(2) and beta(-10)..."
-    "Testing MLN-Boost..."
-    "Testing MLN-Boost via clausal representation..."
-    "Testing LSTree Boosting Regression (this dataset was not preprocessed for regression)..."
-)
-
-TRAINS=(
-    "java -jar $JAR -l -train datasets/Father/train/ -target father -trees 25"
-    "java -jar $JAR -l -noBoost -train datasets/Father/train -target father"
-    "java -jar $JAR -l -softm -alpha 0.5 -beta -2 -train datasets/Father/train -target father -trees 25"
-    "java -jar $JAR -l -softm -alpha 2 -beta -10 -train datasets/Father/train -target father -trees 25"
-    "java -jar $JAR -l -mln -train datasets/Father/train/ -target father -trees 25"
-    "java -jar $JAR -l -mln -mlnClause -train datasets/Father/train -target father -trees 25"
-    "java -jar $JAR -l -reg -train datasets/Father/train -target father -trees 25"
-)
-
-TESTS=(
-    "java -jar $JAR -i -model datasets/Father/train/models -test datasets/Father/test/ -target father -trees 25"
-    "java -jar $JAR -i -model datasets/Father/train/models -test datasets/Father/test/ -target father"
-    "java -jar $JAR -i -model datasets/Father/train/models -test datasets/Father/test/ -target father -trees 25"
-    "java -jar $JAR -i -model datasets/Father/train/models -test datasets/Father/test/ -target father -trees 25"
-    "java -jar $JAR -i -model datasets/Father/train/models -test datasets/Father/test/ -target father -trees 25"
-    "java -jar $JAR -i -model datasets/Father/train/models -test datasets/Father/test/ -target father -trees 25"
-    "java -jar $JAR -i -model datasets/Father/train/models -test datasets/Father/test/ -target father -trees 25"
-)
-
-COMPARES=(
-    "python compare.py datasets/Father/test/results_father.db static/Father/results_rdn.db"
-    "python compare.py datasets/Father/test/results_father.db static/Father/results_rdn_noboost.db"
-    "python compare.py datasets/Father/test/results_father.db static/Father/results_softmA0.5B-2.db"
-    "python compare.py datasets/Father/test/results_father.db static/Father/results_softmA2B-10.db"
-    "python compare.py datasets/Father/test/results_father.db static/Father/results_mln.db"
-    "python compare.py datasets/Father/test/results_father.db static/Father/results_mln_mlnClause.db"
-    "python compare.py datasets/Father/test/results_father.db static/Father/results_regression.db"
-)
-
-EPOCHS=1
 # add an additional parameter to compare.py for changing the sensitivity threshold
 
 if [[ -e Results.txt ]]; then
@@ -103,23 +52,100 @@ fi
 
 #rm -rf datasets/Father/models/*
 
-for ((j=0; j<${EPOCHS}; j++)); do
-    for ((i=0; i<${#ECHOS[*]}; i++)); do
-	printf "\n"
-	printf "${LIGHTBLUE}${ECHOS[i]}${NC}\n"
-	${TRAINS[i]} > trainlog.txt
-	if [[ "$?" = 0 ]]; then
-	    printf " - ${LIGHTGREEN}Training completed without errors.${NC}\n"
-	    ${TESTS[i]} > testlog.txt
+EPOCHS=2
+# a hack to create something similar to dictionaries
+
+# Stretched out:
+#"SET='Father';
+#TRAIN='-train datasets/Father/train/ -target father';
+#TEST='-model datasets/Father/train/models -test datasets/Father/test/ -target father';
+#TARGET='father';
+#TREES='-trees 25'"
+
+DATASETS=(
+    "SET='Father'; TRAIN='-train datasets/Father/train/ -target father'; TEST='-model datasets/Father/train/models/ -test datasets/Father/test/ -target father'; TARGET='father'; TREES='-trees 10'"
+    # all of Toy-Cancer seems to be broken.
+    #"SET='Toy-Cancer'; TRAIN='-train datasets/Toy-Cancer/train/ -target cancer'; TEST='-model datasets/Toy-Cancer/train/models/ -test datasets/Toy-Cancer/test/ -target cancer'; TARGET='cancer'"
+)
+
+for ((e=0; e<${EPOCHS}; e++)); do
+    echo -e "------\nEpoch $e\n" >> Results.txt
+    
+    for ((d=0; d<${#DATASETS[*]}; d++)); do
+	eval ${DATASETS[d]}
+	echo $SET
+	echo $TRAIN
+	echo $TEST
+	echo $TARGET
+	echo $TREES
+
+	NAMES=(
+	    "RDN-Boost"
+	    "RDN-Boost with -noBoost"
+	    "Soft Margin with alpha(0.5) and beta(-2)"
+	    "Soft Margin with alpha(2) and beta(-10)"
+	    "MLN-Boost"
+	    "MLN-Boost with -mlnClause"
+	    "LSTree Boosting Regression"
+	)
+	
+	TRAINS=(
+	    "java -jar $JAR -l $TRAIN $TREES"
+	    "java -jar $JAR -l -noBoost $TRAIN"
+	    "java -jar $JAR -l -softm -alpha 0.5 -beta -2 $TRAIN $TREES"
+	    "java -jar $JAR -l -softm -alpha 2 -beta -10 $TRAIN $TREES"
+	    "java -jar $JAR -l -mln $TRAIN $TREES"
+	    "java -jar $JAR -l -mln -mlnClause $TRAIN $TREES"
+	    "java -jar $JAR -l -reg $TRAIN $TREES"
+	)
+	
+	TESTS=(
+	    "java -jar $JAR -i $TEST $TREES"
+	    "java -jar $JAR -i $TEST"
+	    "java -jar $JAR -i $TEST $TREES"
+	    "java -jar $JAR -i $TEST $TREES"
+	    "java -jar $JAR -i $TEST $TREES"
+	    "java -jar $JAR -i $TEST $TREES"
+	    "java -jar $JAR -i $TEST $TREES"
+	)
+	
+	COMPARES=(
+	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn.db"
+	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn_noboost.db"
+	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA0.5B-2.db"
+	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA2B-10.db"
+	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_mln.db"
+	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_mln_mlnClause.db"
+	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_regression.db"
+	)
+	
+	rm -rf "datasets/$SET/train/models/*"
+	
+	for ((i=0; i<${#NAMES[*]}; i++)); do
+	    printf "${LIGHTBLUE}Testing ${NAMES[i]}...${NC}\n"
+	    ${TRAINS[i]} > trainlog.txt
+	    #echo ${TRAINS[i]}
+	    echo "${SET}: ${NAMES[i]}" >> Results.txt
+	    #echo ${TRAINS[i]} >> Results.txt
 	    if [[ "$?" = 0 ]]; then
-		printf " - ${LIGHTGREEN}Testing completed without errors.${NC}\n"
-		${COMPARES[i]} >> Results.txt
+		printf " - ${LIGHTGREEN}Training completed without errors.${NC}\n"
+		${TESTS[i]} > testlog.txt
+		#echo ${TESTS[i]}
+		#echo ${TESTS[i]} >> Results.txt
+		if [[ "$?" = 0 ]]; then
+		    printf " - ${LIGHTGREEN}Testing completed without errors.${NC}\n"
+		    ${COMPARES[i]} >> Results.txt
+		else
+		    printf " - ${RED}Errors encountered during testing for ${NAMES[i]}.${NC}\n"
+		    echo "Errors encountered during testing for ${NAMES[i]}." >> Results.txt
+		fi
 	    else
-		printf " - ${RED}Errors encountered during testing for ${NAMES[i]}.${NC}\n"
+		printf " - ${RED}Errors encountered during training for ${NAMES[i]}.${NC}\n"
+		echo "Errors encountered during training for ${NAMES[i]}." >> Results.txt
 	    fi
-	else
-	    printf " - ${RED}Errors encountered during training for ${NAMES[i]}.${NC}\n"
-	fi
+	    printf "\n" >> Results.txt
+	    printf "\n"
+	done
     done
 done
 
