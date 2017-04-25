@@ -3,10 +3,13 @@
 # BoostSRL-AutoGrader v0.01
 # Written by Alexander L. Hayes
 # hayesall@indiana.edu
-# Last updated: 4/20/2017
+# Last updated: 4/25/2017
 
-# Sample call:
-# $ bash autograder.sh [JAR-FILE]
+# Sample calls:
+# $ bash hacksaw v1-0.jar
+# $ ./hacksaw v1-0.jar
+# To refresh static models (this will replace the test results in static/):
+# $ ./hacksaw v1-0.jar true
 
 RED='\033[0;31m'
 LIGHTGREEN='\033[1;32m'
@@ -19,14 +22,19 @@ UNDL='\e[4m'
 
 NUMBEROFERRORS=0
 
+function deleteIfExists {
+    if [[ -e "$1" ]]; then
+	rm -f "$1"; fi
+}
+
 function name {
     printf "${BOLD}NAME${NC}\n"
-    printf "       autograder - AutoGrader: check for consistency between versions of BoostSRL.\n\n"
+    printf "       hacksaw - BoostSRL Hacksaw: check for consistency between versions of BoostSRL.\n\n"
 }
 
 function synopsis {
     printf "${BOLD}SYNOPSIS${NC}\n"
-    printf "       bash autograder.sh [${UNDL}OPTIONS${NC}]... [${UNDL}JAR${NC}]\n\n"
+    printf "       bash hacksaw [${UNDL}OPTIONS${NC}]... [${UNDL}JAR${NC}]\n\n"
 }
 
 function hlp {
@@ -44,16 +52,22 @@ else
     exit 2
 fi
 
+EPOCHS=5
+
+# force moves to occur
+UPDATE='false'
+if [[ $2 = 'true' ]]; then
+    EPOCHS=1
+    UPDATE='true'
+fi
+
 # add an additional parameter to compare.py for changing the sensitivity threshold
 
-if [[ -e Results.txt ]]; then
-    rm -f Results.txt
-fi
+deleteIfExists Results.txt
 
 #rm -rf datasets/Father/models/*
 
-EPOCHS=2
-# a hack to create something similar to dictionaries
+
 
 # Stretched out:
 #"SET='Father';
@@ -62,11 +76,15 @@ EPOCHS=2
 #TARGET='father';
 #TREES='-trees 25'"
 
+# a hack to create something similar to dictionaries
 DATASETS=(
     "SET='Father'; TRAIN='-train datasets/Father/train/ -target father'; TEST='-model datasets/Father/train/models/ -test datasets/Father/test/ -target father'; TARGET='father'; TREES='-trees 10'"
-    # all of Toy-Cancer seems to be broken.
-    #"SET='Toy-Cancer'; TRAIN='-train datasets/Toy-Cancer/train/ -target cancer'; TEST='-model datasets/Toy-Cancer/train/models/ -test datasets/Toy-Cancer/test/ -target cancer'; TARGET='cancer'"
+    "SET='Toy-Cancer'; TRAIN='-train datasets/Toy-Cancer/train/ -target cancer'; TEST='-model datasets/Toy-Cancer/train/models/ -test datasets/Toy-Cancer/test/ -target cancer'; TARGET='cancer'"
+    #"SET='WebKB'; TRAIN='-train datasets/WebKB/train/ -target faculty'; TEST='-model datasets/WebKB/train/models/ -test datasets/WebKB/test/ -target faculty'; TARGET='faculty'; TREES='-trees 10'"
+    "SET='IMDB'; TRAIN='-train datasets/IMDB/train/ -target female_gender'; TEST='-model datasets/IMDB/train/models/ -test datasets/IMDB/test/ -target female_gender'; TARGET='female_gender'; TREES='-trees 10'"
 )
+
+AUCJARPATH='-aucJarPath .'
 
 for ((e=0; e<${EPOCHS}; e++)); do
     echo -e "------\nEpoch $e\n" >> Results.txt
@@ -79,9 +97,13 @@ for ((e=0; e<${EPOCHS}; e++)); do
 	echo $TARGET
 	echo $TREES
 
+	# remove precomputed/recomputed if it was necessary in the previous iteration.
+	deleteIfExists precomputed.txt
+	deleteIfExists recomputed.txt
+
 	NAMES=(
 	    "RDN-Boost"
-	    "RDN-Boost with -noBoost"
+	    #"RDN-Boost with -noBoost"
 	    "Soft Margin with alpha(0.5) and beta(-2)"
 	    "Soft Margin with alpha(2) and beta(-10)"
 	    "MLN-Boost"
@@ -91,7 +113,7 @@ for ((e=0; e<${EPOCHS}; e++)); do
 	
 	TRAINS=(
 	    "java -jar $JAR -l $TRAIN $TREES"
-	    "java -jar $JAR -l -noBoost $TRAIN"
+	    #"java -jar $JAR -l -noBoost $TRAIN"
 	    "java -jar $JAR -l -softm -alpha 0.5 -beta -2 $TRAIN $TREES"
 	    "java -jar $JAR -l -softm -alpha 2 -beta -10 $TRAIN $TREES"
 	    "java -jar $JAR -l -mln $TRAIN $TREES"
@@ -100,23 +122,33 @@ for ((e=0; e<${EPOCHS}; e++)); do
 	)
 	
 	TESTS=(
-	    "java -jar $JAR -i $TEST $TREES"
-	    "java -jar $JAR -i $TEST"
-	    "java -jar $JAR -i $TEST $TREES"
-	    "java -jar $JAR -i $TEST $TREES"
-	    "java -jar $JAR -i $TEST $TREES"
-	    "java -jar $JAR -i $TEST $TREES"
-	    "java -jar $JAR -i $TEST $TREES"
+	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
+	    #"java -jar $JAR -i $TEST $AUCJARPATH"
+	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
+	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
+	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
+	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
+	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
 	)
 	
 	COMPARES=(
 	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn.db"
-	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn_noboost.db"
+	    #"python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn_noboost.db"
 	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA0.5B-2.db"
 	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA2B-10.db"
 	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_mln.db"
 	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_mln_mlnClause.db"
 	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_regression.db"
+	)
+
+	MOVES=(
+	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn.db"
+	    #"mv datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn_noboost.db"
+	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA0.5B-2.db"
+	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA2B-10.db"
+	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_mln.db"
+	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_mln_mlnClause.db"
+	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_regression.db"
 	)
 	
 	rm -rf "datasets/$SET/train/models/*"
@@ -134,7 +166,12 @@ for ((e=0; e<${EPOCHS}; e++)); do
 		#echo ${TESTS[i]} >> Results.txt
 		if [[ "$?" = 0 ]]; then
 		    printf " - ${LIGHTGREEN}Testing completed without errors.${NC}\n"
-		    ${COMPARES[i]} >> Results.txt
+		    if [[ $UPDATE = 'true' ]]; then
+			echo "Updating baseline scores, results will not be calculated."
+			${MOVES[i]}
+		    else
+			${COMPARES[i]} >> Results.txt
+		    fi
 		else
 		    printf " - ${RED}Errors encountered during testing for ${NAMES[i]}.${NC}\n"
 		    echo "Errors encountered during testing for ${NAMES[i]}." >> Results.txt
@@ -149,8 +186,10 @@ for ((e=0; e<${EPOCHS}; e++)); do
     done
 done
 
-rm -f trainlog.txt
-rm -f testlog.txt
+deleteIfExists trainlog.txt
+deleteIfExists testlog.txt
+deleteIfExists precomputed.txt
+deleteIfExists recomputed.txt
 
 exit 0
 
