@@ -28,11 +28,11 @@ lines2 = []
 with open(file1,'r') as f:
     file1lines = f.read().splitlines()
     for line in file1lines:
-        lines1.append(float(line.split()[2]))
+        lines1.append(float(line.split()[-1]))
 with open(file2,'r') as f:
     file2lines = f.read().splitlines()
     for line in file2lines:
-        lines2.append(float(line.split()[2]))
+        lines2.append(float(line.split()[-1]))
 
 #print(lines1)
 #print(lines2)
