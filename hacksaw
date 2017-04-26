@@ -78,8 +78,8 @@ deleteIfExists Results.txt
 
 # a hack to create something similar to dictionaries
 DATASETS=(
-    "SET='Father'; TRAIN='-train datasets/Father/train/ -target father'; TEST='-model datasets/Father/train/models/ -test datasets/Father/test/ -target father'; TARGET='father'; TREES='-trees 10'"
-    "SET='Toy-Cancer'; TRAIN='-train datasets/Toy-Cancer/train/ -target cancer'; TEST='-model datasets/Toy-Cancer/train/models/ -test datasets/Toy-Cancer/test/ -target cancer'; TARGET='cancer'"
+    #"SET='Father'; TRAIN='-train datasets/Father/train/ -target father'; TEST='-model datasets/Father/train/models/ -test datasets/Father/test/ -target father'; TARGET='father'; TREES='-trees 10'"
+    #"SET='Toy-Cancer'; TRAIN='-train datasets/Toy-Cancer/train/ -target cancer'; TEST='-model datasets/Toy-Cancer/train/models/ -test datasets/Toy-Cancer/test/ -target cancer'; TARGET='cancer'"
     #"SET='WebKB'; TRAIN='-train datasets/WebKB/train/ -target faculty'; TEST='-model datasets/WebKB/train/models/ -test datasets/WebKB/test/ -target faculty'; TARGET='faculty'; TREES='-trees 10'"
     "SET='IMDB'; TRAIN='-train datasets/IMDB/train/ -target female_gender'; TEST='-model datasets/IMDB/train/models/ -test datasets/IMDB/test/ -target female_gender'; TARGET='female_gender'; TREES='-trees 10'"
 )
