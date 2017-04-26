@@ -91,3 +91,5 @@ precompute:
 workedunder_1(D, C) :- workedunder(A,D), all(A, workedunder(A,D), AllA), C is length(AllA).
 precompute:
 workedunder_2(A, C) :- workedunder(A,D), all(D, workedunder(A,D), AllD), C is length(AllD).
+
+okIfUnknown: female_gender/1
