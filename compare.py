@@ -6,7 +6,7 @@ from __future__ import print_function
 import os
 import sys
 
-SENSITIVITY = 0.05
+SENSITIVITY = 0.03
 
 args = sys.argv[1:]
 if len(args) != 2:
