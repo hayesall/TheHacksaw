@@ -8,7 +8,7 @@ Part I: Cora Dataset with RDN-Boost
 '''
 
 # Tushar Scores for Learning Time (s), Inference Time (s), AUC ROC Score (.../1.0), AUC PR Score (.../1.0)
-tusharlearning = [32.915,31.041,31.513,33.747,33.920,30.077,28.033,27.372,26.847,27.690,26.243,30.576,26.331,32.417,35.398,26.122,32.949,26.394,31.549,31.982,26.675,31.571,27.649,27.011,32.833]
+tusharlearning = [50.478,53.559,51.199,51.647,51.905,54.063,53.503,53.205,50.436,52.368,52.660,52.340,51.432,53.686,50.264,50.822,50.456,54.750,55.617,50.250,53.459,50.006,54.784,51.240,50.847]
 tusharinference = [2.146,2.254,2.245,2.191,2.015,2.057,2.231,2.262,2.153,2.359,2.206,2.184,2.387,2.221,1.955,2.110,2.202,1.961,2.262,2.216,2.482,2.106,2.102,1.807,2.079]
 tusharroc = [0.846560,0.842710,0.841126,0.848733,0.849323,0.845722,0.849106,0.848112,0.845225,0.848702,0.845939,0.846374,0.846343,0.845722,0.846343,0.842368,0.846187,0.848702,0.846498,0.845877,0.846870,0.841747,0.846063,0.846374,0.845038]
 tusharpr = [0.975392,0.974795,0.974285,0.975619,0.975816,0.975221,0.975753,0.975645,0.975060,0.975771,0.975214,0.975326,0.975419,0.975221,0.975419,0.974675,0.975285,0.975771,0.975474,0.975278,0.975462,0.974477,0.975344,0.975326,0.975085]
@@ -43,38 +43,43 @@ roc_stat_sig = stats.f_oneway(tusharroc, eroc, rroc, wroc, sroc)
 pr_stat_sig = stats.f_oneway(tusharpr, epr, rpr, wpr, spr)
 
 print('\nPart I: Cora Dataset with RDN-Boost\n')
-print(tabulate([['Tushar', 
-                 str(str(np.mean(tusharlearning)) + ' +- ' + str(np.std(tusharlearning))),
-                 str(str(np.mean(tusharinference)) + ' +- ' + str(np.std(tusharinference))),
-                 str(str(np.mean(tusharroc)) + ' +- ' + str(np.std(tusharroc))),
-                 str(str(np.mean(tusharpr)) + ' +- ' + str(np.std(tusharpr)))],
-                ['-e',
-                 str(str(np.mean(elearning)) + ' +- ' + str(np.std(elearning))),
-                 str(str(np.mean(einference)) + ' +- ' + str(np.std(einference))),
-                 str(str(np.mean(eroc)) + ' +- ' + str(np.std(eroc))),
-                 str(str(np.mean(epr)) + ' +- ' + str(np.std(epr)))],
-                ['-r',
-                 str(str(np.mean(rlearning)) + ' +- ' + str(np.std(rlearning))),
-                 str(str(np.mean(rinference)) + ' +- ' + str(np.std(rinference))),
-                 str(str(np.mean(rroc)) + ' +- ' + str(np.std(rroc))),
-                 str(str(np.mean(rpr)) + ' +- ' + str(np.std(rpr)))],
-                ['-w',
-                 str(str(np.mean(wlearning)) + ' +- ' + str(np.std(wlearning))),
-                 str(str(np.mean(winference)) + ' +- ' + str(np.std(winference))),
-                 str(str(np.mean(wroc)) + ' +- ' + str(np.std(wroc))),
-                 str(str(np.mean(wpr)) + ' +- ' + str(np.std(wpr)))],
-                ['-s',
-                 str(str(np.mean(slearning)) + ' +- ' + str(np.std(slearning))),
-                 str(str(np.mean(sinference)) + ' +- ' + str(np.std(sinference))),
-                 str(str(np.mean(sroc)) + ' +- ' + str(np.std(sroc))),
-                 str(str(np.mean(spr)) + ' +- ' + str(np.std(spr)))],
-                
-                ['-----', '-----', '-----', '-----', '-----'],
-                ['pvalues',
-                 str(learning_stat_sig[1]),
-                 str(inference_stat_sig[1]),
-                 str(roc_stat_sig[1]),
-                 str(pr_stat_sig[1])]],
-               headers=['algorithm', 'Training (s)', 'Testing (s)', 'AUC ROC', 'AUC PR'],
-               tablefmt='orgtbl'))
+print(tabulate([['Exhaustive', 
+                 str(str(round(np.mean(tusharlearning), 2)) + ' + ' + str(round(np.std(tusharlearning), 2))),
+                 str(str(round(np.mean(tusharinference), 2)) + ' + ' + str(round(np.std(tusharinference), 2))),
+                 str(str(round(np.mean(tusharroc), 2)) + ' + ' + str(round(np.std(tusharroc), 4))),
+                 str(str(round(np.mean(tusharpr), 2)) + ' + ' + str(round(np.std(tusharpr), 5)))],
+                ['All',
+                 str(str(round(np.mean(elearning), 2)) + ' + ' + str(round(np.std(elearning), 2))),
+                 str(str(round(np.mean(einference), 2)) + ' + ' + str(round(np.std(einference), 2))),
+                 str(str(round(np.mean(eroc), 2)) + ' + ' + str(round(np.std(eroc), 4))),
+                 str(str(round(np.mean(epr), 2)) + ' + ' + str(round(np.std(epr), 5)))],
+                ['Random',
+                 str(str(round(np.mean(rlearning), 2)) + ' + ' + str(round(np.std(rlearning), 2))),
+                 str(str(round(np.mean(rinference), 2)) + ' + ' + str(round(np.std(rinference), 2))),
+                 str(str(round(np.mean(rroc), 2)) + ' + ' + str(round(np.std(rroc), 4))),
+                 str(str(round(np.mean(rpr), 2)) + ' + ' + str(round(np.std(rpr), 5)))],
+                ['Walk',
+                 str(str(round(np.mean(wlearning), 2)) + ' + ' + str(round(np.std(wlearning), 2))),
+                 str(str(round(np.mean(winference), 2)) + ' + ' + str(round(np.std(winference), 2))),
+                 str(str(round(np.mean(wroc), 2)) + ' + ' + str(round(np.std(wroc), 4))),
+                 str(str(round(np.mean(wpr), 2)) + ' + ' + str(round(np.std(wpr), 5)))],
+                ['Shortest',
+                 str(str(round(np.mean(slearning), 2)) + ' + ' + str(round(np.std(slearning), 2))),
+                 str(str(round(np.mean(sinference), 2)) + ' + ' + str(round(np.std(sinference), 2))),
+                 str(str(round(np.mean(sroc), 2)) + ' + ' + str(round(np.std(sroc), 4))),
+                 str(str(round(np.mean(spr), 2)) + ' + ' + str(round(np.std(spr), 5)))],
+                ['pvalues (ANOVA)',
+                 #str(learning_stat_sig[1]),
+                 '-',
+                 #str(inference_stat_sig[1]),
+                 '-',
+                 str(round(roc_stat_sig[1], 4)),
+                 str(round(pr_stat_sig[1], 4))]],
+               headers=['Method', 'Training (s)', 'Testing (s)', 'AUC ROC', 'AUC PR'],
+               tablefmt='latex'))
 #tablefmt='latex'
+#tablefmt='orgtbl'
+
+'''
+Part II: WebKB Dataset with RDN-Boost
+'''
