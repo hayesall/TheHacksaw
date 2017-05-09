@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# BoostSRL-AutoGrader v0.01
+# BoostSRL-Hacksaw v0.01
 # Written by Alexander L. Hayes
 # hayesall@indiana.edu
 # Last updated: 4/25/2017
@@ -52,7 +52,7 @@ else
     exit 2
 fi
 
-EPOCHS=5
+EPOCHS=25
 
 # force moves to occur
 UPDATE='false'
@@ -64,10 +64,12 @@ fi
 # add an additional parameter to compare.py for changing the sensitivity threshold
 
 deleteIfExists Results.txt
+deleteIfExists INFERENCE.txt
+deleteIfExists LEARNING.txt
+deleteIfExists roc.txt
+deleteIfExists pr.txt
 
 #rm -rf datasets/Father/models/*
-
-
 
 # Stretched out:
 #"SET='Father';
@@ -81,7 +83,8 @@ DATASETS=(
     #"SET='Father'; TRAIN='-train datasets/Father/train/ -target father'; TEST='-model datasets/Father/train/models/ -test datasets/Father/test/ -target father'; TARGET='father'; TREES='-trees 10'"
     #"SET='Toy-Cancer'; TRAIN='-train datasets/Toy-Cancer/train/ -target cancer'; TEST='-model datasets/Toy-Cancer/train/models/ -test datasets/Toy-Cancer/test/ -target cancer'; TARGET='cancer'"
     #"SET='WebKB'; TRAIN='-train datasets/WebKB/train/ -target faculty'; TEST='-model datasets/WebKB/train/models/ -test datasets/WebKB/test/ -target faculty'; TARGET='faculty'; TREES='-trees 10'"
-    "SET='IMDB'; TRAIN='-train datasets/IMDB/train/ -target female_gender'; TEST='-model datasets/IMDB/train/models/ -test datasets/IMDB/test/ -target female_gender'; TARGET='female_gender'; TREES='-trees 10'"
+    #"SET='IMDB'; TRAIN='-train datasets/IMDB/train/ -target female_gender'; TEST='-model datasets/IMDB/train/models/ -test datasets/IMDB/test/ -target female_gender'; TARGET='female_gender'; TREES='-trees 10'"
+    "SET='Cora'; TRAIN='-train datasets/Cora/train/ -target sameauthor'; TEST='-model datasets/Cora/train/models/ -test datasets/Cora/test/ -target sameauthor'; TARGET='sameauthor'; TREES='-trees 10'"
 )
 
 AUCJARPATH='-aucJarPath .'
@@ -91,11 +94,11 @@ for ((e=0; e<${EPOCHS}; e++)); do
     
     for ((d=0; d<${#DATASETS[*]}; d++)); do
 	eval ${DATASETS[d]}
-	echo $SET
-	echo $TRAIN
-	echo $TEST
-	echo $TARGET
-	echo $TREES
+	#echo $SET
+	#echo $TRAIN
+	#echo $TEST
+	#echo $TARGET
+	#echo $TREES
 
 	# remove precomputed/recomputed if it was necessary in the previous iteration.
 	deleteIfExists precomputed.txt
@@ -104,60 +107,69 @@ for ((e=0; e<${EPOCHS}; e++)); do
 	NAMES=(
 	    "RDN-Boost"
 	    #"RDN-Boost with -noBoost"
-	    "Soft Margin with alpha(0.5) and beta(-2)"
-	    "Soft Margin with alpha(2) and beta(-10)"
-	    "MLN-Boost"
-	    "MLN-Boost with -mlnClause"
-	    "LSTree Boosting Regression"
+	    #"Soft Margin with alpha(0.5) and beta(-2)"
+	    #"Soft Margin with alpha(2) and beta(-10)"
+	    #"MLN-Boost"
+	    #"MLN-Boost with -mlnClause"
+	    #"LSTree Boosting Regression"
 	)
 	
 	TRAINS=(
 	    "java -jar $JAR -l $TRAIN $TREES"
 	    #"java -jar $JAR -l -noBoost $TRAIN"
-	    "java -jar $JAR -l -softm -alpha 0.5 -beta -2 $TRAIN $TREES"
-	    "java -jar $JAR -l -softm -alpha 2 -beta -10 $TRAIN $TREES"
-	    "java -jar $JAR -l -mln $TRAIN $TREES"
-	    "java -jar $JAR -l -mln -mlnClause $TRAIN $TREES"
-	    "java -jar $JAR -l -reg $TRAIN $TREES"
+	    #"java -jar $JAR -l -softm -alpha 0.5 -beta -2 $TRAIN $TREES"
+	    #"java -jar $JAR -l -softm -alpha 2 -beta -10 $TRAIN $TREES"
+	    #"java -jar $JAR -l -combine -mln $TRAIN $TREES"
+	    #"java -jar $JAR -l -mln -mlnClause $TRAIN $TREES"
+	    #"java -jar $JAR -l -reg $TRAIN $TREES"
 	)
 	
 	TESTS=(
 	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
 	    #"java -jar $JAR -i $TEST $AUCJARPATH"
-	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
-	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
-	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
-	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
-	    "java -jar $JAR -i $TEST $AUCJARPATH $TREES"
+	    #"java -jar $JAR -i $TEST $AUCJARPATH $TREES"
+	    #"java -jar $JAR -i $TEST $AUCJARPATH $TREES"
+	    #"java -jar $JAR -i $TEST $AUCJARPATH $TREES"
+	    #"java -jar $JAR -i $TEST $AUCJARPATH $TREES"
+	    #"java -jar $JAR -i $TEST $AUCJARPATH $TREES"
 	)
 	
 	COMPARES=(
 	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn.db"
 	    #"python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn_noboost.db"
-	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA0.5B-2.db"
-	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA2B-10.db"
-	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_mln.db"
-	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_mln_mlnClause.db"
-	    "python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_regression.db"
+	    #"python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA0.5B-2.db"
+	    #"python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA2B-10.db"
+	    #"python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_mln.db"
+	    #"python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_mln_mlnClause.db"
+	    #"python compare.py datasets/$SET/test/results_$TARGET.db static/$SET/results_regression.db"
 	)
 
 	MOVES=(
 	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn.db"
 	    #"mv datasets/$SET/test/results_$TARGET.db static/$SET/results_rdn_noboost.db"
-	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA0.5B-2.db"
-	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA2B-10.db"
-	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_mln.db"
-	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_mln_mlnClause.db"
-	    "mv datasets/$SET/test/results_$TARGET.db static/$SET/results_regression.db"
+	    #"mv datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA0.5B-2.db"
+	    #"mv datasets/$SET/test/results_$TARGET.db static/$SET/results_softmA2B-10.db"
+	    #"mv datasets/$SET/test/results_$TARGET.db static/$SET/results_mln.db"
+	    #"mv datasets/$SET/test/results_$TARGET.db static/$SET/results_mln_mlnClause.db"
+	    #"mv datasets/$SET/test/results_$TARGET.db static/$SET/results_regression.db"
 	)
 	
 	rm -rf "datasets/$SET/train/models/*"
 	
 	for ((i=0; i<${#NAMES[*]}; i++)); do
-	    printf "${LIGHTBLUE}Testing ${NAMES[i]}...${NC}\n"
+	    printf "${LIGHTBLUE}Testing $e ${NAMES[i]}...${NC}\n"
+
+	    # Side note: performing random walks by replacing modes file:
+	    echo "setParam: maxTreeDepth=3." > datasets/Cora/cora_bk.txt
+	    echo "setParam: nodeSize=2." >> datasets/Cora/cora_bk.txt
+	    python walker2.py -r Cora.mayukh | grep "mode:" >> datasets/Cora/cora_bk.txt
+	    # This replaces the background modes with modes generated by walking random paths.
+	    
 	    ${TRAINS[i]} > trainlog.txt
 	    #echo ${TRAINS[i]}
 	    echo "${SET}: ${NAMES[i]}" >> Results.txt
+	    grep "% Total learning time" trainlog.txt >> Results.txt
+	    grep "% Total learning time" trainlog.txt | cut -d ':' -f 2 >> LEARNING.txt
 	    #echo ${TRAINS[i]} >> Results.txt
 	    if [[ "$?" = 0 ]]; then
 		printf " - ${LIGHTGREEN}Training completed without errors.${NC}\n"
@@ -170,7 +182,14 @@ for ((e=0; e<${EPOCHS}; e++)); do
 			echo "Updating baseline scores, results will not be calculated."
 			${MOVES[i]}
 		    else
-			${COMPARES[i]} >> Results.txt
+			grep "% Total inference time" testlog.txt >> Results.txt
+			grep "% Total inference time" testlog.txt | cut -d ':' -f 2 >> INFERENCE.txt
+			# Instead of using the compare function, just keep track of AUC ROC / AUC PR
+			grep "%   AUC ROC" testlog.txt >> Results.txt
+			grep "%   AUC ROC" testlog.txt | cut -d '=' -f 2 >> roc.txt
+			grep "%   AUC PR" testlog.txt >> Results.txt
+			grep "%   AUC PR" testlog.txt | cut -d '=' -f 2 >> pr.txt
+			#${COMPARES[i]} >> Results.txt
 		    fi
 		else
 		    printf " - ${RED}Errors encountered during testing for ${NAMES[i]}.${NC}\n"

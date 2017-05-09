@@ -1,9 +1,11 @@
-mode: author(+paperid,+authid).
+setParam: maxTreeDepth=3.
+setParam: nodeSize=2.
 mode: author(-paperid,+authid).
 mode: haswordauthor(+authid,+wordid).
 mode: haswordauthor(+authid,-wordid).
 mode: haswordtitle(+titleid,-wordid).
 mode: haswordtitle(-titleid,+wordid).
+mode: haswordvenue(+venueid,+wordid).
 mode: haswordvenue(+venueid,-wordid).
 mode: haswordvenue(-venueid,+wordid).
 mode: sameauthor(+authid,+authid).
@@ -11,10 +13,9 @@ mode: samebib(+paperid,-paperid).
 mode: samebib(-paperid,+paperid).
 mode: sametitle(+titleid,-titleid).
 mode: sametitle(-titleid,+titleid).
-mode: samevenue(+venueid,-venueid).
-mode: samevenue(-venueid,+venueid).
+mode: samevenue(+venueid,+venueid).
+mode: title(+paperid,+titleid).
 mode: title(+paperid,-titleid).
 mode: title(-paperid,+titleid).
-mode: venue(+paperid,+venueid).
 mode: venue(+paperid,-venueid).
 mode: venue(-paperid,+venueid).
