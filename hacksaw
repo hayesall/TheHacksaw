@@ -119,7 +119,7 @@ for ((e=0; e<${EPOCHS}; e++)); do
 	    #"java -jar $JAR -l -noBoost $TRAIN"
 	    #"java -jar $JAR -l -softm -alpha 0.5 -beta -2 $TRAIN $TREES"
 	    #"java -jar $JAR -l -softm -alpha 2 -beta -10 $TRAIN $TREES"
-	    #"java -jar $JAR -l -combine -mln $TRAIN $TREES"
+	    #"java -jar $JAR -l -mln $TRAIN $TREES"
 	    #"java -jar $JAR -l -mln -mlnClause $TRAIN $TREES"
 	    #"java -jar $JAR -l -reg $TRAIN $TREES"
 	)

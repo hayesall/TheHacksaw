@@ -1,7 +1,0 @@
-father(elizabeth, mrbennet) 0.8765379214243096
-father(jane, mrbennet) 0.8765379214243096
-father(charlotte, mrlucas) 0.8303232588526305
-!father(charlotte, mrsbennet) 0.9576341330248809
-!father(jane, mrlucas) 0.9256309687571191
-!father(mrsbennet, mrbennet) 0.9237731184404772
-!father(jane, elizabeth) 0.9576341330248809
