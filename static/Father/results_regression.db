@@ -1,7 +1,0 @@
-father(elizabeth, mrbennet) 0.5
-father(jane, mrbennet) 0.5
-father(charlotte, mrlucas) 0.5
-!father(charlotte, mrsbennet) 0.5
-!father(jane, mrlucas) 0.5
-!father(mrsbennet, mrbennet) 0.5
-!father(jane, elizabeth) 0.5
