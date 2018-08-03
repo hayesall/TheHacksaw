@@ -1,58 +1,95 @@
-{
-    "Datasets": {
-	"Father": {
-	    "cmd1": [
-		"Testing normal functionality with boosted regression trees...",
-		"java -jar $JAR -l -train datasets/Father/train/ -target father -trees 25",
-		"java -jar $JAR -i -model datasets/Father/train/models/ -test datasets/Father/test/ -target father -trees 25",
-		"python compare.py datasets/Father/test/results_father.db static/Father/results_rdn.db"
-	    ],
-	    "cmd2": [
-		"Testing with boosting disabled...",
-		"java -jar $JAR -l -noBoost -train datasets/Father/train/ -target father -trees 25",
-		"java -jar $JAR -i -model datasets/Father/train/models/ -test datasets/Father/test/ -target father -trees 25",
-		"static/Father/results_noBoost.db"
-	    ],
-	    "cmd3": [
-		"Testing soft margin with alpha(0.5) and beta(-2)...",
-		"java -jar $JAR -l -softm -alpha 0.5 -beta -2 -train datasets/Father/train/ -target father -trees 25",
-		"java -jar $JAR -i -model datasets/Father/train/models/ -test datasets/Father/test/ -target father -trees 25",
-		"static/Father/results_softmA0.5B-2.db"
-	    ],
-	    "cmd4": [
-		"Testing soft margin with alpha(2) and beta(-10)...",
-		"java -jar $JAR -l -softm -alpha 2 -beta -10 -train datasets/Father/train/ -target father -trees 25",
-		"java -jar $JAR -i -model datasets/Father/train/models/ -test datasets/Father/test/ -target father -trees 25",
-		"static/Father/results_softmA2B-10.db"
-	    ],
-	    "cmd5": [
-		"Testing MLN boost...",
-		"java -jar $JAR -l -mln -train datasets/Father/train/ -target father -trees 25",
-		"java -jar $JAR -i -model datasets/Father/train/models/ -test datasets/Father/test/ -target father -trees 25",
-		"static/Father/results_mln.db"
-	    ],
-	    "cmd6": [
-		"Testing MLN-Boost via clausal representation...",
-		"java -jar $JAR -l -mln -mlnClause -train datasets/Father/train/ -target father -trees 25",
-		"java -jar $JAR -i -model datasets/Father/train/models/ -test datasets/Father/test/ -target father -trees 25",
-		"static/Father/results_mln_mlnClause.db"
-	    ],
-	    "cmd7": [
-		"Testing LSTree Boosting Regression (this dataset was not preprocessed for regression)...",
-		"java -jar $JAR -l -reg -train datasets/Father/train/ -target father -trees 25",
-		"java -jar $JAR -i -model datasets/Father/train/models/ -test datasets/Father/test/ -target father -trees 25",
-		"static/Father/results_regression.db"
-	    ],
-	    "cmd8": [
-		"echo 'Insert advice information here (attempting to exit)...'",
-		"exit 0"
-	    ]
-	},
-	"ToyCancer": {
-	    
-	},
-	"AdviceTest": {
-	    
-	}
-    }
-}
+[
+  {
+    "name": "ToyFather",
+    "trainPath": "datasets/Father/train/",
+    "testPath": "datasets/Father/test/",
+    "target": "father",
+    "trees": 10,
+    "regression": 0,
+    "params": [
+      "",
+      "-softm -alpha 0.5 -beta -2",
+      "-mln",
+      "-mln -mlnClause"
+    ]
+  },
+  {
+    "name": "WebKB",
+    "trainPath": "datasets/WebKB/train/",
+    "testPath": "datasets/WebKB/test/",
+    "target": "faculty",
+    "trees": 10,
+    "regression": 0,
+    "params": [
+      "",
+      "-softm -alpha 0.5 -beta -2",
+      "-mln",
+      "-mln -mlnClause"
+    ]
+  },
+  {
+    "name": "ToyCancer",
+    "trainPath": "datasets/Toy-Cancer/train/",
+    "testPath": "datasets/Toy-Cancer/test/",
+    "target": "cancer",
+    "trees": 10,
+    "regression": 0,
+    "params": [
+      "",
+      "-softm -alpha 0.5 -beta -2",
+      "-mln",
+      "-mln -mlnClause"
+    ]
+  },
+  {
+    "name": "IMDB",
+    "trainPath": "datasets/IMDB/train/",
+    "testPath": "datasets/IDMB/test/",
+    "target": "female_gender",
+    "trees": 10,
+    "regression": 0,
+    "params": [
+      "",
+      "-softm -alpha 0.5 -beta -2",
+      "-mln",
+      "-mln -mlnClause"
+    ]
+  },
+  {
+    "name": "Cora",
+    "trainPath": "datasets/Cora/train/",
+    "testPath": "datasets/Cora/test/",
+    "target": "sameauthor",
+    "trees": 10,
+    "regression": 0,
+    "params": [
+      "",
+      "-softm -alpha 0.5 -beta -2",
+      "-mln",
+      "-mln -mlnClause"
+    ]
+  },
+  {
+    "name": "Toy Advice",
+    "trainPath": "datasets/Toy-Advice/train/",
+    "testPath": "datasets/Toy-Advice/test/",
+    "target": "ha",
+    "trees": 3,
+    "regression": 0,
+    "params": [
+      "",
+      "-adviceFile datasets/Toy-Advice/advice.txt"
+    ]
+  },
+  {
+    "name": "Boston Housing",
+    "trainPath": "datasets/Boston-Housing/train_boston/",
+    "testPath": "datasets/Boston-Housing/test_boston/",
+    "target": "medv",
+    "trees": 10,
+    "regression": 1,
+    "params": [
+      "-reg"
+    ]
+  }
+]

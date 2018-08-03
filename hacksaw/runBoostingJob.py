@@ -22,7 +22,7 @@ class RunBoostSRLJob(object):
 
     aucJarPath = ' -aucJarPath . '
 
-    def __init__(self, jarpath, target, trainPath, testPath):
+    def __init__(self, jarpath, params, target, trainPath, testPath, trees):
         """
         Initialize a BoostSRL object which performs learning and inference
         on a given data set.
@@ -31,13 +31,21 @@ class RunBoostSRLJob(object):
         self.jarpath = jarpath
         self.target = target
         self.train = trainPath
+
+        self.trees = str(trees)
+
         self.test = testPath
+        self.model = trainPath + 'models/'
 
         # Learning
-        #self._train_model()
+        self._train_model(params)
 
         # Inference
-        #self._test_model()
+        self._test_model(params)
+
+        # Gather Scores
+        print('Gathering scores.')
+        print()
 
 
     def _call_process(self, call):
@@ -52,7 +60,7 @@ class RunBoostSRLJob(object):
         os.waitpid(p.pid, 0)
 
 
-    def _train_model(self, jarpath, dataset, params, target, trees):
+    def _train_model(self, params):
         """
         Use a jar file to train a model.
 
@@ -65,23 +73,35 @@ class RunBoostSRLJob(object):
         :returns: None
         """
 
-        CALL = 'java -jar ' + jarpath + ' -l -train ' + dataset + ' ' + \
-               params + ' -target ' + target + ' -trees ' + str(trees) + \
-               ' > testlog.txt'
-        self._call_process(CALL)
+        # Construct a call based on provided arguments.
+        CALL = 'java -jar ' + self.jarpath + \
+               ' -l -train ' + self.train + \
+               ' -target ' + self.target + \
+               ' -trees ' + self.trees + " " + \
+               params + ' > trainlog.txt'
+
+        #self._call_process(CALL)
+        print(CALL)
 
 
-    def _test_model(self, jarpath, model, dataset, params, target, trees):
+    def _test_model(self, params):
         """
         Use a jar file to test a model.
 
         :returns: None.
         """
 
-        CALL = 'java -jar ' + jarpath + ' -i -model ' + model + ' ' + \
-               ' -test ' + dataset + ' ' + \
-               params + ' -target ' + target + ' -trees ' + str(trees)
-        self._call_proces(CALL)
+        # Construct a call based on provided arguments.
+        CALL = 'java -jar ' + self.jarpath + \
+               ' -i -model ' + self.model + \
+               ' -test ' + self.test + \
+               ' -target ' + self.target + \
+               ' -trees ' + self.trees + \
+               ' -aucJarPath . ' + \
+               params + ' > testlog.txt'
+
+        #self._call_proces(CALL)
+        print(CALL)
 
 
     def _get_roc_and_pr_score(self):
@@ -95,11 +115,19 @@ def hacksaw(configuration):
     :param configuration: Configuration file loaded via json.
     :type configuration: dict.
     """
-    pass
 
     results = []
 
     for config in configuration:
-        results.append(RunBoostSRLJob(*config))
+
+        _trainPath = config['trainPath']
+        _testPath = config['testPath']
+        _target = config['target']
+        _trees = config['trees']
+        _params = config['params']
+
+        for param in _params:
+            # Run BoostSRL based on the specific parameters for a data set.
+            RunBoostSRLJob('v1-0.jar', param, _target, _trainPath, _testPath, _trees)
 
     return results
