@@ -2,6 +2,7 @@
 *~
 *.class
 *.DS_Store
+__pycache__
 
 # ignore the models
 datasets/*/train/models/*
