@@ -5,6 +5,9 @@ whether the outputs produced between two versions are consistent.
 
 from __future__ import print_function
 
+from .compare import compare
+
+import json
 import os
 import re
 import sys
@@ -44,8 +47,8 @@ class RunBoostSRLJob(object):
         self._test_model(params)
 
         # Gather Scores
-        print('Gathering scores.')
-        print()
+        #print('Gathering scores.')
+        #print()
 
 
     def _call_process(self, call):
@@ -80,8 +83,8 @@ class RunBoostSRLJob(object):
                ' -trees ' + self.trees + " " + \
                params + ' > trainlog.txt'
 
-        #self._call_process(CALL)
-        print(CALL)
+        self._call_process(CALL)
+        #print(CALL)
 
 
     def _test_model(self, params):
@@ -100,15 +103,15 @@ class RunBoostSRLJob(object):
                ' -aucJarPath . ' + \
                params + ' > testlog.txt'
 
-        #self._call_proces(CALL)
-        print(CALL)
+        self._call_process(CALL)
+        #print(CALL)
 
 
     def _get_roc_and_pr_score(self):
         pass
 
 
-def hacksaw(configuration):
+def hacksaw(configuration, jar1, jar2):
     """
     The main hacksaw driver function.
 
@@ -116,7 +119,7 @@ def hacksaw(configuration):
     :type configuration: dict.
     """
 
-    results = []
+    results = {}
 
     for config in configuration:
 
@@ -127,7 +130,29 @@ def hacksaw(configuration):
         _params = config['params']
 
         for param in _params:
-            # Run BoostSRL based on the specific parameters for a data set.
-            RunBoostSRLJob('v1-0.jar', param, _target, _trainPath, _testPath, _trees)
+
+            error = []
+
+            for _ in range(5):
+                # Run BoostSRL based on the specific parameters for a data set.
+                RunBoostSRLJob(jar1, param, _target, _trainPath, _testPath, _trees)
+
+                # Store the results in a temporary location
+                os.rename(_testPath + 'results_' + _target + '.db', 'results.txt')
+
+                # Run BoostSRL again and compare the results.
+                RunBoostSRLJob(jar2, param, _target, _trainPath, _testPath, _trees)
+
+                E = compare('results.txt', _testPath + 'results_' + _target + '.db')
+                error.append(list(E))
+
+            error = np.array(error, dtype=np.float64)
+
+            results_key = config['name'] + param
+            results[results_key] = list(np.mean(error, axis=0))
+
+            # Dump the results dictionary following an update.
+            with open('results.json', 'w') as f:
+                json.dump(results, f, indent=2)
 
     return results

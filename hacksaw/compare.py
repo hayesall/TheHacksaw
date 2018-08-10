@@ -6,12 +6,37 @@ from __future__ import print_function
 import os
 import sys
 
+import numpy as np
+
 SENSITIVITY = 0.03
+
+
+class Error:
+    """
+    Measure the error to guage performance.
+    """
+
+    def __init__(self, A, B):
+        self.mae = self.mean_absolute_error(A, B)
+        self.mse = self.mean_square_error(A, B)
+        self.rmse = np.sqrt(self.mse)
+
+    def mean_absolute_error(self, A, B):
+        return np.abs(np.subtract(A, B)).mean()
+
+    def mean_square_error(self, A, B):
+        return np.square(np.subtract(A, B)).mean()
+
+    def root_mean_square_error(self, A, B):
+        return np.sqrt(mean_square_error(A, B))
 
 
 def compare(file1, file2):
     """
     Compare the contents of two files.
+
+    Returns a 3-tuple of floats measuring error:
+        (mean_absolute_error, mean_square_error, root_mean_square_error)
     """
 
     lines1, lines2 = [], []
@@ -26,6 +51,13 @@ def compare(file1, file2):
         for line in f2lines:
             lines2.append(float(line.split()[-1]))
 
+    A = np.array(lines1)
+    B = np.array(lines2)
+
+    E = Error(A, B)
+    return E.mae, E.mse, E.rmse
+
+    '''
     # Start at 0 and add one every time a difference is encountered.
     differences = 0
     total = len(lines1)
@@ -42,7 +74,7 @@ def compare(file1, file2):
             differences += 1
 
     return total, differences, SENSITIVITY, total - differences
-
+    '''
 
 if __name__ == '__main__':
 
