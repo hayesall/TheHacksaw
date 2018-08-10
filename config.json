@@ -44,7 +44,7 @@
   {
     "name": "IMDB",
     "trainPath": "datasets/IMDB/train/",
-    "testPath": "datasets/IDMB/test/",
+    "testPath": "datasets/IMDB/test/",
     "target": "female_gender",
     "trees": 10,
     "regression": 0,
