@@ -28,4 +28,5 @@ args = parser.parse_args()
 with codecs.open(args.file) as f:
     config = json.load(f)
 
-runBoostingJob.hacksaw(config)
+# Run the hacksaw with configuration parameters and the two jar files.
+runBoostingJob.hacksaw(config, args.j1, args.j2)
